@@ -1,83 +1,89 @@
 # CLAUDE.md
 
-## Project overview
+このファイルは、Claudeでこのプロジェクトの開発を続けるときの引き継ぎ資料です。
 
-This repository contains **奈良よりみち (Nara Yorimichi)**, a mobile-first web prototype that proposes three short travel routes in Nara based on a user's fixed schedule, free time, budget, desired area, and interests.
+## プロジェクト概要
 
-The defining product constraint is that every proposal must include travel time and return the user to the requested goal before the next appointment. SHIKA no ASHIATO-listed businesses and facilities should be prioritized.
+このリポジトリには、スマホ向けWebプロトタイプ「奈良よりみち」が入っています。ユーザーが入力した決まっている予定、空き時間、予算、行きたい地域、興味に合わせて、奈良の短い旅行ルートを3つ提案するサービスです。
 
-- Production prototype: https://nara-yorimichi.abcdefghijklmno1226.chatgpt.site
+最も大切な条件は、すべてのルートに移動時間を含め、次の予定までにユーザーが指定したゴール地点へ戻れることです。候補にはSHIKA no ASHIATO掲載店・施設を優先します。
+
+- 公開中のプロトタイプ: https://nara-yorimichi.abcdefghijklmno1226.chatgpt.site
 - GitHub: https://github.com/kotonara-tech/kototech-aug-hackathon-team1
-- Default branch: `main`
-- Runtime: vinext / React 19 / TypeScript / Cloudflare Workers-compatible output
-- Node.js: `>=22.13.0`
+- 基本ブランチ: `main`
+- 実行環境: vinext / React 19 / TypeScript / Cloudflare Workers互換の出力
+- Node.js: `22.13.0以上`
 
-## Product flow
+## サービスの流れ
 
-The first screen offers two entry modes:
+最初の画面では、次の2つの入力方法を選びます。
 
 1. `予定がある旅行`
-   - Travel date
-   - Existing schedule in free-form text
-   - Free-time start and end
-   - Budget per person
-   - Start point and required return point
-   - Notes such as desired shops, food, or area
+   - 旅行日
+   - すでに決まっている予定を自由入力
+   - 空き時間の開始・終了
+   - 1人あたりの予算
+   - 出発地点と必ず戻る地点
+   - 行きたい店、食べたいもの、地域などの備考
 2. `いまの空き時間`
-   - Available duration
-   - Budget per person
-   - Current/start point and required return point
-   - Notes
+   - 使える時間
+   - 1人あたりの予算
+   - 現在地または出発地点と必ず戻る地点
+   - 備考
 
-The result should provide three meaningfully different routes. Each route must show:
+結果画面では、内容の異なるルートを3つ表示します。各ルートには次の情報が必要です。
 
-- Total expected cost
-- Total duration and travel time
-- Ordered stops
-- Return time and goal
-- Spot type, approximate price, address, coordinates, photo, and expected stay
-- Google Maps and Street View links
-- A visible warning if the route exceeds the user's budget
+- 合計の目安金額
+- 合計時間と移動時間
+- 立ち寄る順番
+- 戻る時刻とゴール地点
+- 施設の種類、目安料金、住所、座標、写真、目安滞在時間
+- GoogleマップとStreet Viewのリンク
+- 予算を超えたときに分かりやすい警告
 
-## Current implementation
+## 現在の実装状況
 
-The project is a functional front-end prototype. It currently includes:
+今は、画面操作ができるフロントエンドのプロトタイプです。次の機能が入っています。
 
-- Both input modes and working form state
-- Three selectable sample routes
-- A visual route map and round-trip timeline
-- Spot detail modal with price, address, coordinates, photo, map, and Street View links
-- Searchable official catalog drawer
-- Responsive desktop/mobile layout
-- Open Graph social card in `public/og.png`
+- 2つの入力モードと入力内容の保持
+- 選択できる3つのサンプルルート
+- 簡易ルート図と往復のタイムライン
+- 料金、住所、座標、写真、地図、Street Viewリンクを表示する施設詳細モーダル
+- 検索できる公式施設カタログ
+- PC・スマホ対応のレイアウト
+- `public/og.png`のSNS共有用画像
 
-The route calculations and the enriched details for the sample stops are currently hardcoded prototype estimates in `app/page.tsx`. Do not present them as live or authoritative data. The UI already labels estimates as prototype values.
+ルート計算とサンプル施設の追加情報は、現在`app/page.tsx`にプロトタイプ用の固定値として書かれています。実際に取得した最新データとして扱ったり、説明したりしないでください。画面上でも試算値であることを表示しています。
 
-## Important files
+また、`README.md`の「動作確認の結果」に現在分かっている問題を記録しています。2026年8月21日時点では`npm run build`は成功しますが、`npm run lint`には3件、`npm test`には古いスターター用テストが原因の2件の失敗があります。
+
+## 重要なファイル
 
 - `app/page.tsx`
-  - Main client UI, form state, sample enriched spots, route definitions, search/filter behavior, modals
+  - メイン画面、入力状態、追加情報付きサンプル施設、ルート定義、検索・絞り込み、モーダル
 - `app/globals.css`
-  - Entire visual system and responsive styles
+  - 全体の見た目とスマホ対応
 - `app/data/ashiato-spots.json`
-  - Structured SHIKA no ASHIATO catalog extracted from the official PDF
+  - 公式PDFから抽出したSHIKA no ASHIATO施設カタログ
 - `app/layout.tsx`
-  - Japanese page metadata and request-host-based Open Graph URLs
+  - 日本語のページ情報と、アクセス先ホストに合わせたOGP URL
 - `public/og.png`
-  - Social preview image
+  - SNS共有時の画像
 - `.openai/hosting.json`
-  - OpenAI Sites project binding; preserve `project_id`
+  - OpenAI Sitesのプロジェクト設定。`project_id`を変更・削除しないこと
+- `README.md`
+  - 初心者向けの進捗、動作確認結果、今後の作業、起動方法
 
-## SHIKA no ASHIATO dataset
+## SHIKA no ASHIATOの施設データ
 
-Official source:
+公式データの出典は次のとおりです。
 
-- Landing page: https://www.city.nara.lg.jp/site/shikanoashiato/201908.html
+- 一覧ページ: https://www.city.nara.lg.jp/site/shikanoashiato/201908.html
 - PDF: https://www.city.nara.lg.jp/uploaded/attachment/204172.pdf
 
-`app/data/ashiato-spots.json` contains **375 unique facilities** extracted from PDF pages 1-11. Pages 12-16 are the `ふるさと納税` subset and were not treated as an additional master list.
+`app/data/ashiato-spots.json`には、PDFの1〜11ページから取り出した**重複なしの375施設**が入っています。12〜16ページは`ふるさと納税`対象施設の抜粋であり、別の全施設一覧としては追加していません。
 
-The main extracted fields are:
+主なデータ項目は次のとおりです。
 
 ```ts
 type CatalogItem = {
@@ -89,7 +95,7 @@ type CatalogItem = {
 };
 ```
 
-Section counts overlap because one facility may be listed in multiple categories:
+1つの施設が複数カテゴリに載っているため、カテゴリ件数には重複があります。
 
 - グルメ・カフェ: 188
 - お土産・ショッピング: 127
@@ -97,11 +103,11 @@ Section counts overlap because one facility may be listed in multiple categories
 - 宿泊: 34
 - サービス: 20
 
-Never discard the full catalog when changing the route UI. Preserve the source URL, original names, genre values, `narafuru`, and page provenance.
+ルート画面を変更するときも、全375件のカタログを削除しないでください。出典URL、元の施設名、ジャンル、`narafuru`、PDFの掲載ページを残してください。
 
-The PDF does **not** provide complete addresses, coordinates, live prices, opening hours, or photos. Those fields must be enriched from a licensed/authorized external source and should retain per-field provenance and a verification timestamp.
+PDFには、すべての住所、座標、最新料金、営業時間、写真は入っていません。これらは利用許可のある外部データから追加し、項目ごとの出典と確認日時を残す必要があります。
 
-Recommended future normalized record:
+将来は、次のような統一データ形式にする想定です。
 
 ```ts
 type Place = {
@@ -124,86 +130,89 @@ type Place = {
 };
 ```
 
-## SHIKA no ASHIATO integration boundary
+## SHIKA no ASHIATO連携で守る範囲
 
-Do not assume that any arbitrary QR code can award points or coupons. SHIKA no ASHIATO QR codes are likely server-side campaign/store identifiers managed by Nara City and SYMONS.
+どのQRコードでも自由にポイントやクーポンを付けられるとは考えないでください。SHIKA no ASHIATOのQRコードは、奈良市と株式会社サイモンズがサーバー側で管理するキャンペーンIDや店舗IDである可能性があります。
 
-The intended later flow is:
+将来想定している流れは次のとおりです。
 
-1. This app proposes three routes.
-2. The user selects one route.
-3. Completion is verified by GPS, a store QR, purchase approval, or a combination.
-4. A pre-registered SHIKA no ASHIATO campaign awards the coupon/points.
+1. このアプリが3つのルートを提案する
+2. ユーザーが1つ選ぶ
+3. GPS、店舗QR、購入確認、またはそれらの組み合わせで達成を確認する
+4. 事前登録済みのSHIKA no ASHIATOキャンペーンからクーポンやポイントを付与する
 
-Any real coupon issuance, one-time code import, campaign creation, deep link, or completion callback requires confirmation and authorization from Nara City/SYMONS. Do not reverse-engineer or call a private mobile API.
+本物のクーポン発行、1回限りのコード取り込み、キャンペーン作成、アプリへの直接リンク、達成通知の受信には、奈良市・株式会社サイモンズの確認と許可が必要です。非公開のモバイルAPIを解析したり、無断で呼び出したりしないでください。
 
-## Next technical milestone
+## 次の技術目標
 
-Replace prototype estimates with live place and route data. The likely Google Maps Platform services are:
+プロトタイプの試算値を、実際の施設・ルートデータへ置き換えます。Google Maps Platformでは、次のようなサービスの利用を想定しています。
 
-- Places API (New): place matching, address, categories, hours, price level, photos
-- Routes API: walking/transit travel time and round-trip feasibility
-- Street View Static API or Maps URL: visual context
+- Places API: 施設の照合、住所、カテゴリ、営業時間、価格帯、写真
+- Routes API: 徒歩・公共交通の移動時間と往復可能かの判定
+- Street View Static APIまたはMaps URL: 周辺の見た目
 
-Suggested environment variables:
+想定する環境変数は次のとおりです。
 
 ```bash
 GOOGLE_MAPS_API_KEY=
 NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY=
 ```
 
-Prefer server-side calls for Places and Routes. Restrict server keys by API and deployment environment. Restrict browser keys by allowed referrer. Never commit API keys or secrets.
+PlacesとRoutesは、なるべくサーバー側から呼び出してください。サーバー用キーは使用APIと実行環境で制限し、ブラウザー用キーは許可するリファラーで制限します。APIキーや秘密情報は絶対にGitへコミットしないでください。
 
-The route solver should enforce hard constraints before ranking:
+ルート候補の順位を決める前に、次の必須条件を満たしていない候補を除外します。
 
 - `arrivalAtGoal <= requiredEndTime - safetyBuffer`
 - `totalExpectedCost <= budget`
-- Venue is expected to be open during arrival/stay
-- Travel mode is supported
-- Required reservation lead time is satisfied
+- 到着時刻から滞在終了まで、施設が営業している見込みがある
+- 指定した移動方法が使える
+- 必要な予約期限を満たしている
 
-Then rank feasible routes by user preference match, SHIKA no ASHIATO membership, travel efficiency, route diversity, and confidence in the underlying data.
+条件を満たしたルートを、ユーザーの希望との一致、SHIKA no ASHIATO掲載施設か、移動効率、3案の違い、元データの信頼度で評価します。
 
-## Commands
+## 開発コマンド
 
 ```bash
 npm install
 npm run dev
 npm run build
 npm run lint
+npm test
 ```
 
-Run `npm run build` before committing. The development server may choose port 3001 if port 3000 is occupied.
+コミット前に`npm run build`を実行してください。3000番ポートが使われている場合、開発サーバーは3001番など別のポートを選ぶことがあります。
 
-## Coding guidelines
+## コーディング方針
 
-- Keep the interface and user-facing copy in Japanese.
-- Preserve the current warm ivory, moss green, and vermilion visual direction unless intentionally redesigning the product.
-- Keep touch targets and the mobile layout usable; the primary audience may be walking while using a phone.
-- Maintain keyboard focus styles, labels, and dialog semantics.
-- Avoid loading all 375 records into the visible DOM at once; retain incremental display or pagination.
-- Keep route and place types explicit. Move large hardcoded datasets out of `app/page.tsx` as the implementation grows.
-- Clearly distinguish official source data, enriched third-party data, estimated values, and live values.
-- Never claim that prices, opening hours, travel times, or availability are current unless they came from a live source.
-- Do not remove the mandatory return-to-goal constraint.
-- Do not commit `.env*`, credentials, generated build output, or local PDF scratch files.
+- 画面とユーザー向けの文章は日本語にする
+- 意図的にデザインを変える場合を除き、現在の温かいアイボリー、苔色、朱色の雰囲気を残す
+- スマホで歩きながら使う可能性を考え、押しやすいボタンサイズとスマホ表示を保つ
+- キーボードのフォーカス表示、入力ラベル、ダイアログの意味付けを保つ
+- 375件を一度にすべて画面へ表示せず、追加読み込みまたはページ分けを使う
+- ルートと施設の型を明確にする。実装が大きくなったら、固定データを`app/page.tsx`から分ける
+- 公式データ、外部から追加したデータ、試算値、リアルタイム値を明確に区別する
+- リアルタイムの取得元がない限り、料金、営業時間、移動時間、空き状況が最新だと表示しない
+- 必ずゴール地点へ戻る条件を削除しない
+- `.env*`、認証情報、生成されたビルド結果、作業用PDFをGitへコミットしない
 
-## Git workflow
+## Gitの作業方法
 
-The repository is already configured as:
+このリポジトリには、すでに次のリモートが設定されています。
 
 ```bash
 origin https://github.com/kotonara-tech/kototech-aug-hackathon-team1.git
 ```
 
-Use focused commits on `main` unless the team asks for a feature branch. Do not rewrite published history. Before pushing, check for unrelated user changes and preserve them.
+チームから別の指示がない限り、`main`に目的を絞ったコミットを作ります。すでに公開した履歴は書き換えないでください。push前に関係のないユーザー変更が混ざっていないか確認し、既存の変更を消さないでください。
 
-## Definition of done for the next iteration
+## 次の開発を完了とする条件
 
-- User can enter either travel mode without confusing or duplicated fields.
-- Three route results are actually derived from the user's time, budget, start, goal, and notes.
-- Every proposed route returns to the requested goal on time with a safety buffer.
-- Proposed stops exist in the structured SHIKA no ASHIATO catalog or are explicitly marked as supplemental.
-- Spot details show source and freshness information.
-- Loading, empty, no-feasible-route, API-error, and mobile states are handled.
-- `npm run build` succeeds.
+- ユーザーが、重複した分かりにくい項目なしで2つの旅行モードを入力できる
+- 時間、予算、出発地、ゴール、備考から、実際に異なる3ルートを作る
+- すべてのルートが余裕時間を残して指定ゴールへ間に合う
+- 提案施設がSHIKA no ASHIATOの構造化カタログに存在する。追加施設ならそのことを明記する
+- 施設詳細に出典と情報の確認日時を表示する
+- 読み込み中、候補なし、APIエラー、スマホ表示に対応する
+- `npm run build`が成功する
+- `npm run lint`が成功する
+- `npm test`が成功する
