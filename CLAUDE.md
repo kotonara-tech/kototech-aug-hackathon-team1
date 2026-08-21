@@ -8,11 +8,16 @@
 
 最も大切な条件は、すべてのルートに移動時間を含め、次の予定までにユーザーが指定したゴール地点へ戻れることです。候補にはSHIKA no ASHIATO掲載店・施設を優先します。
 
-- 公開中のプロトタイプ: https://nara-yorimichi.abcdefghijklmno1226.chatgpt.site
 - GitHub: https://github.com/kotonara-tech/kototech-aug-hackathon-team1
 - 基本ブランチ: `main`
-- 実行環境: vinext / React 19 / TypeScript / Cloudflare Workers互換の出力
+- 実行環境: ローカルのvinext / React 19 / TypeScript
 - Node.js: `22.13.0以上`
+
+## 公開方針
+
+このアプリは**ローカル環境だけで起動し、一般公開しない**方針です。ユーザーが方針変更を明示しない限り、Sites、Vercel、Cloudflareなどへのデプロイや、一般公開用のホスティング設定を追加しないでください。
+
+以前のクラウド版は所有者だけが閲覧できる設定で、一般公開されていません。リポジトリからはホスティング設定を削除しています。
 
 ## サービスの流れ
 
@@ -41,6 +46,48 @@
 - GoogleマップとStreet Viewのリンク
 - 予算を超えたときに分かりやすい警告
 
+## 現在のプログラムが動く仕組み
+
+### 起動から画面表示まで
+
+1. `npm run dev`がViteとvinextのローカル開発サーバーを起動する
+2. `vite.config.ts`がvinextとCloudflare開発用プラグインを読み込む
+3. `worker/index.ts`がリクエストをvinextのApp Routerへ渡す
+4. `app/layout.tsx`が`app/globals.css`、ページタイトル、説明、OGP情報を読み込む
+5. `app/page.tsx`がブラウザー側で入力フォーム、ルート、カタログ、モーダルを表示する
+
+### データの読み込み元
+
+- `app/page.tsx`は、ファイル先頭で`app/data/ashiato-spots.json`を直接importする
+- JSONには奈良市公式PDFの1〜11ページから事前抽出した375施設が入っている
+- 実行中に奈良市のPDFやWebページを再取得しているわけではない
+- `catalog`変数はJSONの`count`と`items`を保持し、カタログ件数・検索・絞り込みに使う
+- サンプル施設6件の追加情報は`app/page.tsx`の`spots`に固定値として入っている
+- 3つのルートは`app/page.tsx`の`routes`に固定値として入っている
+- サンプル写真は外部サイトのURLなので、表示時にブラウザーが各外部サイトから読み込む
+- GoogleマップとStreet ViewはAPI呼び出しではなく、施設名・住所・座標から作った外部リンクである
+
+### 入力から結果表示まで
+
+- 入力値はReactの`useState`に保存する。サーバー、データベース、ファイル、`localStorage`には保存しない
+- `generate`関数は`generated`を`true`にして結果欄を表示し、ROUTE Aを選択する
+- `generate`関数は375施設から新しいルートを計算していない
+- 入力した予算は各固定ルートの`total`と比較し、超過額の表示に使う
+- 予定ありモードの開始・終了時刻はタイムラインの出発・帰着表示に使う
+- ルートカードを押すと`selectedRoute`が変わり、対応する固定ルートの地図・タイムラインを表示する
+- 施設を押すと`activeSpot`が変わり、詳細モーダルを表示する
+- カタログ検索は`useMemo`で、施設名・カテゴリ・ジャンルをブラウザー内で絞り込む
+- `visibleCount`により最初は30件だけ表示し、追加ボタンごとに30件増やす
+
+### 現在使っていない仕組み
+
+- Google Places API / Routes API
+- SHIKA no ASHIATO API
+- データベースと`db/`以下のコード
+- `app/chatgpt-auth.ts`のログイン処理
+- `examples/`以下のサンプルコード
+- `.env.local`のAPIキー項目
+
 ## 現在の実装状況
 
 今は、画面操作ができるフロントエンドのプロトタイプです。次の機能が入っています。
@@ -55,6 +102,8 @@
 
 ルート計算とサンプル施設の追加情報は、現在`app/page.tsx`にプロトタイプ用の固定値として書かれています。実際に取得した最新データとして扱ったり、説明したりしないでください。画面上でも試算値であることを表示しています。
 
+外部画像を除き、現在の画面データはローカルファイルから読み込みます。完全なオフライン動作ではなく、外部画像と地図リンクにはインターネット接続が必要です。
+
 また、`README.md`の「動作確認の結果」に現在分かっている問題を記録しています。2026年8月21日時点では`npm run build`は成功しますが、`npm run lint`には3件、`npm test`には古いスターター用テストが原因の2件の失敗があります。
 
 ## 重要なファイル
@@ -67,10 +116,12 @@
   - 公式PDFから抽出したSHIKA no ASHIATO施設カタログ
 - `app/layout.tsx`
   - 日本語のページ情報と、アクセス先ホストに合わせたOGP URL
+- `vite.config.ts`
+  - ローカル開発サーバー、vinext、Cloudflare開発環境の設定
+- `worker/index.ts`
+  - リクエストをvinextへ渡すローカル実行時の入口
 - `public/og.png`
   - SNS共有時の画像
-- `.openai/hosting.json`
-  - OpenAI Sitesのプロジェクト設定。`project_id`を変更・削除しないこと
 - `README.md`
   - 初心者向けの進捗、動作確認結果、今後の作業、起動方法
 
@@ -193,6 +244,8 @@ npm test
 - 公式データ、外部から追加したデータ、試算値、リアルタイム値を明確に区別する
 - リアルタイムの取得元がない限り、料金、営業時間、移動時間、空き状況が最新だと表示しない
 - 必ずゴール地点へ戻る条件を削除しない
+- ユーザーが明示的に方針を変えない限り、アプリをデプロイ・一般公開しない
+- `.openai/hosting.json`などの公開用設定を再追加しない
 - `.env*`、認証情報、生成されたビルド結果、作業用PDFをGitへコミットしない
 
 ## Gitの作業方法
