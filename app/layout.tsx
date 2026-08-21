@@ -6,7 +6,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3001";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const origin = `${protocol}://${host}`;
+  const requestOrigin = `${protocol}://${host}`;
+  const origin = process.env.APP_URL?.replace(/\/$/, "") || requestOrigin;
   const title = "奈良よりみち｜空き時間からつくる奈良旅";
   const description = "予定・空き時間・予算に合わせて、SHIKA no ASHIATO掲載スポットから3つの奈良ルートを提案します。";
   const image = `${origin}/og.png`;

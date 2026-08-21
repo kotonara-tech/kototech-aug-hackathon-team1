@@ -1,100 +1,65 @@
-# vinext-starter
+# 奈良よりみち
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+SHIKA no ASHIATO掲載スポットを活用し、旅行者の予定・空き時間・予算から、出発地点へ戻れる3つの奈良周遊ルートを提案するWebプロトタイプです。
 
-## Prerequisites
+- 公開版: https://nara-yorimichi.abcdefghijklmno1226.chatgpt.site
+- Node.js: 22以上（`>=22.13.0`）
+- Runtime: vinext / React 19 / TypeScript / Cloudflare Workers
 
-- Node.js `>=22.13.0`
-
-## Quick Start
+## セットアップ
 
 ```bash
+git clone https://github.com/kotonara-tech/kototech-aug-hackathon-team1.git
+cd kototech-aug-hackathon-team1
+nvm use
+cp .env.example .env.local
 npm install
 npm run dev
-npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+ブラウザでターミナルに表示されたURLを開いてください。通常は `http://localhost:3000` です。3000番ポートが使われている場合は別のポートが自動選択されます。
 
-## Included Shape
+現状のプロトタイプは外部APIを呼ばないため、環境変数を設定しなくても起動できます。`.env.local` は将来のGoogle Maps API連携に備えるためのものです。
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+## 環境変数
 
-## Workspace Auth Headers
+| 変数 | 必須 | 用途 |
+| --- | --- | --- |
+| `APP_URL` | 任意 | OGP等で使用する公開URL。未設定時はリクエストから自動判定 |
+| `GOOGLE_MAPS_API_KEY` | 現在未使用 | 将来のサーバー側Places / Routes API用 |
+| `NEXT_PUBLIC_GOOGLE_MAPS_BROWSER_KEY` | 現在未使用 | 将来のブラウザ側Maps / Street View表示用 |
+| `SHIKA_NO_ASHIATO_API_BASE_URL` | 現在未使用 | 奈良市・SYMONSの許可を得た将来の連携先 |
+| `SHIKA_NO_ASHIATO_API_KEY` | 現在未使用 | 許可済み連携用の秘密鍵 |
 
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
+秘密値をGitにコミットしないでください。Google MapsのサーバーキーはAPI制限、ブラウザーキーはAPI制限とHTTPリファラー制限を設定してください。
 
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
+## コマンド
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm run dev      # ローカル開発
+npm run build    # 本番ビルド確認
+npm run lint     # 静的チェック
+npm start        # ビルド済みアプリの起動
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## 主要ファイル
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+- `app/page.tsx` - 入力フォーム、3ルート、店舗詳細、全件カタログ
+- `app/data/ashiato-spots.json` - 公式PDFから抽出した375施設
+- `app/globals.css` - レスポンシブUI
+- `app/layout.tsx` - メタデータとOGP
+- `CLAUDE.md` - Claude向けの詳細な開発引き継ぎ
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+## データソース
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+- [奈良市公式一覧ページ](https://www.city.nara.lg.jp/site/shikanoashiato/201908.html)
+- [SHIKA no ASHIATO 店舗・施設一覧PDF](https://www.city.nara.lg.jp/uploaded/attachment/204172.pdf)
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+PDFの1〜11ページから375のユニーク施設を構造化しています。PDFだけでは住所・座標・料金・営業時間・写真が揃わないため、サンプルルートの一部情報はプロトタイプ用の補完値です。
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+## 注意事項
 
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+- 移動時間・一部の価格・座標はプロトタイプ試算です。
+- 任意のQRコードでSHIKA no ASHIATOのポイントやクーポンを発行できるとは限りません。
+- 本番のクーポン連携には奈良市・株式会社サイモンズによるキャンペーン登録または正式なAPI提供が必要です。
+- 詳細な設計方針と次の実装事項は `CLAUDE.md` を参照してください。
