@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import catalogJson from "./data/ashiato-spots.json";
 
 type TripMode = "planned" | "gap";
@@ -134,6 +134,23 @@ export default function Home() {
   const budget = Number(form.budget.replace(/[^0-9]/g, "")) || 0;
   const activeRoute = routes[selectedRoute];
 
+  const catalogSearchRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!activeSpot && !catalogOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (activeSpot) setActiveSpot(null);
+      else setCatalogOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [activeSpot, catalogOpen]);
+
+  useEffect(() => {
+    if (catalogOpen) catalogSearchRef.current?.focus();
+  }, [catalogOpen]);
+
   const update = (key: keyof typeof form, value: string) => setForm((current) => ({ ...current, [key]: value }));
 
   const generate = (event: FormEvent) => {
@@ -266,8 +283,8 @@ export default function Home() {
       <footer><div className="brand"><span className="brand-mark">奈</span><span>奈良よりみち</span></div><p>SHIKA no ASHIATO 掲載スポットを活かしたルート提案プロトタイプ</p><a href="https://www.city.nara.lg.jp/site/shikanoashiato/201908.html" target="_blank" rel="noreferrer">データ出典：奈良市公式ページ ↗</a></footer>
 
       {activeSpot && (
-        <div className="modal-backdrop" role="presentation" onMouseDown={() => setActiveSpot(null)}>
-          <section className="spot-modal" role="dialog" aria-modal="true" aria-labelledby="spot-title" onMouseDown={(e) => e.stopPropagation()}>
+        <div className="modal-backdrop" role="presentation"><button type="button" className="backdrop-close" aria-label="閉じる" onClick={() => setActiveSpot(null)} />
+          <section className="spot-modal" role="dialog" aria-modal="true" aria-labelledby="spot-title">
             <button className="close-button" onClick={() => setActiveSpot(null)} aria-label="閉じる">×</button>
             <div className="spot-image" style={{ backgroundImage: `url("${activeSpot.image}")` }}><span>SHIKA no ASHIATO 掲載</span></div>
             <div className="spot-modal-body"><p className="spot-type">{activeSpot.type}</p><h2 id="spot-title">{activeSpot.name}</h2><p className="spot-note">{activeSpot.note}</p><dl><div><dt>目安料金</dt><dd>{activeSpot.price}</dd></div><div><dt>目安滞在</dt><dd>{activeSpot.stay}</dd></div><div><dt>住所</dt><dd>{activeSpot.address}</dd></div><div><dt>緯度・経度</dt><dd>{activeSpot.lat.toFixed(6)}, {activeSpot.lng.toFixed(6)}</dd></div></dl><div className="map-actions"><a href={mapsUrl(activeSpot)} target="_blank" rel="noreferrer">Google マップ</a><a href={streetViewUrl(activeSpot)} target="_blank" rel="noreferrer">Street View</a></div><small>{activeSpot.sourceNote}<br />写真は店舗公式または周辺イメージ。価格・営業時間は変わる場合があります。</small></div>
@@ -276,10 +293,10 @@ export default function Home() {
       )}
 
       {catalogOpen && (
-        <div className="catalog-backdrop" role="presentation" onMouseDown={() => setCatalogOpen(false)}>
-          <aside className="catalog-panel" role="dialog" aria-modal="true" aria-labelledby="catalog-title" onMouseDown={(e) => e.stopPropagation()}>
+        <div className="catalog-backdrop" role="presentation"><button type="button" className="backdrop-close" aria-label="閉じる" onClick={() => setCatalogOpen(false)} />
+          <aside className="catalog-panel" role="dialog" aria-modal="true" aria-labelledby="catalog-title">
             <header><div><p>SHIKA no ASHIATO 公式PDF</p><h2 id="catalog-title">全{catalog.count}件のスポット</h2></div><button onClick={() => setCatalogOpen(false)} aria-label="閉じる">×</button></header>
-            <div className="catalog-tools"><label><span>店名・ジャンルを検索</span><input autoFocus placeholder="カフェ、宿泊、工芸品…" value={catalogQuery} onChange={(e) => { setCatalogQuery(e.target.value); setVisibleCount(30); }} /></label><div className="category-chips">{sections.map((section) => <button key={section} className={catalogSection === section ? "active" : ""} onClick={() => { setCatalogSection(section); setVisibleCount(30); }}>{section}</button>)}</div></div>
+            <div className="catalog-tools"><label><span>店名・ジャンルを検索</span><input ref={catalogSearchRef} placeholder="カフェ、宿泊、工芸品…" value={catalogQuery} onChange={(e) => { setCatalogQuery(e.target.value); setVisibleCount(30); }} /></label><div className="category-chips">{sections.map((section) => <button key={section} className={catalogSection === section ? "active" : ""} onClick={() => { setCatalogSection(section); setVisibleCount(30); }}>{section}</button>)}</div></div>
             <div className="catalog-count"><strong>{filteredCatalog.length}</strong>件が該当 <span>● は「ならふる」対応</span></div>
             <div className="catalog-list">{filteredCatalog.slice(0, visibleCount).map((item) => <article key={item.name}><div><h3>{item.name}</h3><p>{item.genres.join(" / ")}</p></div><div className="catalog-tags">{item.narafuru && <span className="narafuru">● ならふる</span>}{item.sections.slice(0,2).map((section) => <span key={section}>{section}</span>)}</div></article>)}</div>
             {visibleCount < filteredCatalog.length && <button className="load-more" onClick={() => setVisibleCount((count) => count + 30)}>さらに30件表示</button>}
