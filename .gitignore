@@ -40,3 +40,6 @@ yarn-error.log*
 /outputs/
 /work/
 /tmp/
+
+# Claude Code (個人設定はコミットしない)
+.claude/settings.local.json
