@@ -1,0 +1,5477 @@
+{
+  "source": {
+    "title": "ASHIATOポイントが使えるお店・施設一覧",
+    "url": "https://www.city.nara.lg.jp/uploaded/attachment/204172.pdf",
+    "pdfModified": "2025-12-10",
+    "pagesUsed": "1-11"
+  },
+  "count": 375,
+  "items": [
+    {
+      "name": "37cafe",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "バー",
+        "カフェ",
+        "その他",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "ANDO HOTEL 奈良若草山",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "anyoのきもち",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Atelier Galerie タウの森 1919",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "観光ガイド",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "BOB's_SPACE",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "Brighton Tea Room",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "CAFE ETRANGER NARAD",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ",
+        "ナイトマップ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "CAFE Luce",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "cafe viva 昭和",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "cafe 春 ならまち店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Cafe&Bake Allons Bien",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "その他",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "cafe&restaurant NO PLAN",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ",
+        "ファッション"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "CAFE&RESTAURANT POOL",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "その他",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Cafe&Shop&Salon NOEL",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "cafeアーニーハウス",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "calme closet",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "canata conata（カナタコナタ）",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "cervo bianco",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "洋食",
+        "カフェ",
+        "その他",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "CHAMI -Specialty Coffee Roaster－",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "お菓子",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "Cobachi庵",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "Coffee＆Cookie PRANCE",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "Colorterier カラトリエ",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "サロン",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "cycle shop Re Belle.",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "Dance Studio Zone School",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "DEER GLASSES",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Dog good's Pole Pole",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "食べ物",
+        "ファッション",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Egerie",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "EVANS CASTLE HALL",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "faveur.花",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5,
+        8
+      ]
+    },
+    {
+      "name": "GINSETSUNOSATO",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "good knight ice NARA",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "Hair Salon Unity",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス",
+        "サロン"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "Halal & Veggie ポンテロッソ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "ラーメン",
+        "カレー",
+        "カフェ",
+        "かき氷",
+        "お菓子",
+        "食べ物",
+        "飲食",
+        "ナイトマップ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "HEX HIVE",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "お酒",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Hoo Nyan Boo",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Hotel Base Nara",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "宿泊",
+        "ホテル"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "ICHIBANYA FRUITS CAFE",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "imakoko",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "カレー",
+        "カフェ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "INDIGO CLASSIC",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "JAZZ LIVE BAR blue note Naramachi (ブルーノート)",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "バー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Jump the Gun Japan",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Jネットレンタカー奈良店",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "交通サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "Kakigori ほうせき箱",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "KARAOKE SNACK ODEN",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "バー",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "KINTOUN babycastella",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Koharu Cafe コハルカフェ レンタルスペース",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "Koharu Café",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "KOMAカントリークラブ（コマカントリークラブ）",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "KONOMI cafe",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "KUMI茶菓",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Laccola",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Le GAMiN",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "LOCO南市",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "宿泊",
+        "ホテル"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "LOG CABIN (ログ キャビン）",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "M's フィットネスクラブ",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "体験",
+        "その他サービス"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "MAISON WENIKO",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "maokie マオキー",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "maru room",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "MENYA BIBIRI",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "ラーメン",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "NARA PARK BLUE SKY",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "nexus鍼灸治療院 接骨院",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "OIWAKE PARK キャンプ場",
+      "sections": [
+        "文化体験・体験",
+        "宿泊"
+      ],
+      "genres": [
+        "アウトドア体験",
+        "文化体験",
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8,
+        10
+      ]
+    },
+    {
+      "name": "onwa",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ",
+        "お菓子",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "Osteria YU•RU•RI",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "PHOTO GARDEN",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Pizza UGO 1号車",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "ベーカリー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Pizza UGO ２号車",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷",
+        "ベーカリー",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Pizza UGO ３号車",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "ベーカリー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "pleasure",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "洋食",
+        "居酒屋",
+        "バー",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "POPY by UGO （4号車）",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Private House Hibiki",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "Re;BU10（リブート）",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "RETOX WORKS",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Ring Ring",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "ROLLING UP",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "ファッション"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "Salon de i Soleil（サロンドアイソレイユ）",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "サロン"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "Shika san chocolat",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "softcream mo.",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ",
+        "かき氷"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "SUNNY and MORE",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "その他",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "tamaki奈良店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "ファッション"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "TE=CHA （テイコールチャ）",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "TERRACE 若草山",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "THERA（テラ）～incio～",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "工芸品",
+        "食べ物",
+        "その他",
+        "文化体験",
+        "観光ガイド",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        5,
+        8
+      ]
+    },
+    {
+      "name": "TOEIDO（藤影堂）",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "観光ガイド",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "Tomio cafe KunKun",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "Total therapy cafe salon school studio KURURU",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "食べ物",
+        "文化体験",
+        "観光ガイド",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1,
+        5,
+        8
+      ]
+    },
+    {
+      "name": "Trattoria piano",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "UM GOLF",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "Wakana style",
+      "sections": [
+        "グルメ・カフェ",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "カフェ",
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1,
+        4,
+        8
+      ]
+    },
+    {
+      "name": "WHY KNOT / WHY BOWL",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "WINE BAR grand",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "居酒屋",
+        "バー",
+        "飲食",
+        "ナイトマップ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "Y,Y,HOUSE",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "その他",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "YAMATO Craft Beer table 奈良三条通店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "バー",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "YAMATO Craft Beer table 近鉄奈良駅前店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "バー",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "あかしやショールーム",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "工芸品",
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5,
+        8
+      ]
+    },
+    {
+      "name": "あしびや本舗",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "その他",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1,
+        5
+      ]
+    },
+    {
+      "name": "うどん・そば・呑み処 三条坊",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "おしゃれ館マスダ",
+      "sections": [
+        "グルメ・カフェ",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "カフェ",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1,
+        8
+      ]
+    },
+    {
+      "name": "おちゃけや",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "おちゃのこ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "お料理 ひろ岡",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "お米屋さんの日々献立",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "お花とハーブのある暮らし",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "お茶屋BARつるや",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "バー",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "お食事処 たちばな",
+      "sections": [
+        "グルメ・カフェ",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "和食",
+        "麺類（うどん・そば等）",
+        "カレー",
+        "食べ物"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "かえる庵",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "麺類（うどん・そば等）",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ことあかり洋品店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "ことぶき屋 心家",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "アウトドア体験",
+        "観光ガイド"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "ごはんcafe にこちゃん堂",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "さくらパン工房",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "ベーカリー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "しゃぶくら",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "しゃぶしゃぶ 八重櫻",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "和食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "そまのかわキッチン",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "たかばたけ茶論",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "ちょい飲み茶屋 鹿ドキ！",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "バー",
+        "その他",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "つちや織物所 奈良手紡ぎの会",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "つる由",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "てづくりまるしぇ（町家空間）",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "観光ガイド"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "ならまち 招福庵",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "カフェ",
+        "かき氷",
+        "ベーカリー",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ならまちcafe 756SKY",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ならまち刀剣ショップ杜園",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "なら酒蔵 なべ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "のこのこ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "お菓子",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2,
+        5
+      ]
+    },
+    {
+      "name": "はじめのキムチ",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "はり新",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "和食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "はるキチ セントラルキッチン",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "べっぴん奈良漬",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "ほおずき",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ぽちたまカフェ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "その他",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2,
+        6
+      ]
+    },
+    {
+      "name": "まえだのドーナツ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2,
+        6
+      ]
+    },
+    {
+      "name": "まく堂",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "まちのごはんや ガッツリ亭",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "和食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "まほろば大仏プリン プリンの森",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "飲食",
+        "お菓子"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "まほろば大仏プリン ミ・ナーラ店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "飲食",
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "まほろば大仏プリン 近鉄 西大寺駅ナカ店（VIEW TERACE）",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "飲食",
+        "お菓子"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "まほろば大仏プリン本舗 東大寺門前夢風ひろば店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "飲食",
+        "お菓子"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "もつ粋 テイクアウト専門店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "もつ粋 奈良三条店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "居酒屋",
+        "ナイトマップ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "もつ粋 新大宮本店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "居酒屋",
+        "ナイトマップ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "やまもと和装学院 ならくみひも鳳美",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "ゆう紗",
+      "sections": [
+        "文化体験・体験",
+        "サービス"
+      ],
+      "genres": [
+        "文化体験",
+        "その他サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8,
+        11
+      ]
+    },
+    {
+      "name": "ゆるり 近鉄奈良店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "わぷらす奈良 JR奈良店",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "アウトドア体験",
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "わぷらす奈良 奈良公園バスターミナル店",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "アウトドア体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "わんずはーとかふぇ ならまち店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ゐざさ三条店",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物",
+        "寿司"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2,
+        6
+      ]
+    },
+    {
+      "name": "ゐざさ夢風ひろば店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "ゐざさ夢風ひろば店 ゐざさ茶屋",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ゐざさ平城山店",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "寿司",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2,
+        6
+      ]
+    },
+    {
+      "name": "ゐざさ近鉄奈良駅タイムズプレイス店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "ゐざさ近鉄奈良駅売店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "アイシングクッキー専門店&cafe cotohogu",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "アパートメント三条",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "宿泊",
+        "ホテル"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "アフタヌーンティーロシェ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "アートサロン 空",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "アートスペース上三条",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "観光ガイド",
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "イエローハット奈良店",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "エアラボ",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "オレンジカフェすいもん",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        1
+      ]
+    },
+    {
+      "name": "カウリ",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品",
+        "食べ物",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "カナカナ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "洋食",
+        "カレー",
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "カノコロの天然石",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "カフェ オリオン （cafe ORION）",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "カフェこよみ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "カフェバル",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "カフェモカロン",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "カフェレストラン いちづ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "カフェ・ディネット",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "カレーハウス峰",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カレー",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "キズナカフェ(KIZUNA Cafe)",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "カレー",
+        "カフェ",
+        "かき氷",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "キッチン スタジオ カチート",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "キッチンPEPITA",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "ナイトマップ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ギャラリー たちばな",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "ギャラリーカフェ・ディネット",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "ギャラリー勇斎",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "ゲストハウス楓",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "ゲストハウス楓Annex",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "コンフィースティ ＭＲ１",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "コンフィースティTDS",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "コンフィースティ桜町",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "コンフィースティ清川",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "コンフィースティＭＲ２",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "コンフィーステイ猿沢池",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "宿泊",
+        "ホテル"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "コーヒーロースト松焙煎店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "ゴールデンラビットビール",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "居酒屋",
+        "バー",
+        "その他",
+        "お酒",
+        "食べ物",
+        "文化体験",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "name": "ザ・リアルマッコイズ 奈良",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "ジェラテリア ノンナ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "スパイスカレーと蜂蜜の店 8nosu",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カレー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "スムージー専門店ドリンクドランク",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2,
+        5
+      ]
+    },
+    {
+      "name": "セントラルキッチン はるキチ",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "洋食",
+        "カフェ",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "タイ料理 シャーングルン",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "その他"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "ダイニング螺鈿〜RADEN〜",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "麺類（うどん・そば等）",
+        "バー",
+        "カフェ",
+        "かき氷",
+        "ナイトマップ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "チキンゴルフ奈良",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "チャイナダイニング飛天",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "焼肉",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "トヨタレンタカー 近鉄奈良駅前店",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "交通サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "トヨタレンタカー奈良 JR奈良駅前店",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "交通サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "ナコーレンタサイクル 近鉄奈良",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "アウトドア体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "ナコーレンタサイクル 近鉄西大寺",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "アウトドア体験",
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "ナナイロフルウツ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ナラカラカリー",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "ニジイロメｒン",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "ベーカリー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "ハイティーラボ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2,
+        5
+      ]
+    },
+    {
+      "name": "ハッピースクールビル",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "ハンディークラフト MARU MARU",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "ハンドメイド&ギャラリーChuriko",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        5
+      ]
+    },
+    {
+      "name": "バンテンコーヒー",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "フランシス",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "フリージンググルメMONTURE",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "バー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ブティック一番館",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "ファッション"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "ベルサイドカフェ 奈良店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ペットサロンタケノウチ",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "サロン"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "ホテルアジール・奈良",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "ホテルアラマンダ",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "ホテル天平ならまち",
+      "sections": [
+        "グルメ・カフェ",
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "カフェ",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2,
+        10
+      ]
+    },
+    {
+      "name": "ホテル寧楽",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "ホテル楢の葉守",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "ホテル花小路",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "ホテル鹿音",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "ホトケノネドコ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "マブハイ・キッチン",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "居酒屋",
+        "バー",
+        "バー",
+        "飲食",
+        "ナイトマップ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ムッシュペペ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ",
+        "洋食",
+        "その他"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "ライフシフト睡眠",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "サロン",
+        "その他サービス",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "ラ・カーサミーア",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ラーメンか！チャーハンか！",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "中華",
+        "ラーメン"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "リストランテ ボルゴ・コニシ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "ル・シャトン",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "ファッション"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "レストラン櫃屋",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "レンガレンキ トルコ ハンドメイド雑貨",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "ロコ ロッカー",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "三木ハウスプラン",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "中井農園ストロベリー工房",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4,
+        7
+      ]
+    },
+    {
+      "name": "中国料理百楽 奈良店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "中華"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "中華料理 大廣",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "丸誠武道具店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "丼の店 たまごの極み 大安寺店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "二条",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "麺類（うどん・そば等）",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "但馬屋呉服店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "ファッション"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "佐保ゴルフ倶楽部",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "信天遊歌",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "バー",
+        "その他",
+        "飲食",
+        "ナイトマップ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "冨久傳",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "焼肉",
+        "居酒屋",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "古民家居酒屋 想ふ壺",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "飲食",
+        "ナイトマップ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "古着家Re:",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お酒",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "吉田蚊帳",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "向出醤油醸造元 向出商店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "君の好きだった麺(もの)",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "ラーメン",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "喫茶かるぺでぃえむ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2,
+        6
+      ]
+    },
+    {
+      "name": "喫茶アンジュール",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "喫茶バルドー",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "器人器人",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "工芸品",
+        "文化体験",
+        "観光ガイド",
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        6,
+        8
+      ]
+    },
+    {
+      "name": "囲炉裏ダイニング たなか",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "焼肉",
+        "居酒屋"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "堀内果実園 奈良三条店",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3,
+        7
+      ]
+    },
+    {
+      "name": "墨運堂 墨の資料館",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "変なホテル奈良",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "宿泊",
+        "ホテル"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "夢窓庵",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "大仏いちご",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "カフェ",
+        "かき氷"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "大和とんかつ 八重櫻",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "レストラン"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "大和茶大福専門店GRANCHA",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "大衆酒場BBA",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "大阪屋クリーニング店",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "天平楽座 （天平衣装レンタルサービス）",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "アウトドア体験",
+        "文化体験",
+        "観光ガイド",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "天然酵母パン工房 くりぱんクラブ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "ベーカリー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "天迦久珈琲 ならまち本店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "天迦久珈琲 三条通り店",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3,
+        6
+      ]
+    },
+    {
+      "name": "天迦久珈琲 焙煎研究所-ROASTERY＆LAB",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3,
+        6
+      ]
+    },
+    {
+      "name": "奈良のうまいものプラザ",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "奈良の舎",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "奈良まほろば館",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "お菓子",
+        "お酒",
+        "工芸品",
+        "食べ物",
+        "文化体験",
+        "観光ガイド",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3,
+        6,
+        9
+      ]
+    },
+    {
+      "name": "奈良奥山ドライブウェイ 新若草・ 春日奥山コース",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "奈良奥山ドライブウェイ 高円山コース",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "奈良屋本店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "奈良春日山酒造株式会社",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お酒"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "奈良水晶",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "奈良町 あしびの郷",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "麺類（うどん・そば等）",
+        "カフェ",
+        "かき氷",
+        "工芸品",
+        "食べ物",
+        "文化体験",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3,
+        7,
+        9
+      ]
+    },
+    {
+      "name": "奈良筆 田中",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "工芸品",
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        7,
+        9
+      ]
+    },
+    {
+      "name": "奈良酒専門店 なら泉勇斎",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "居酒屋",
+        "お酒"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3,
+        7
+      ]
+    },
+    {
+      "name": "奈良銘品館 JR奈良駅店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "奈良銘品館 三条通店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "奈良銘品館 奈良公園バスターミナル店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "宝石・時計・補聴器・メガネのイシガミ 奈良店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "宿雨",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "バー",
+        "カフェ",
+        "かき氷",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "富士着物レンタル",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "寧屋工房",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "寧楽菓子司 中西与三郎",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "カフェ",
+        "かき氷",
+        "お菓子",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3,
+        7,
+        9
+      ]
+    },
+    {
+      "name": "寺cafe 花美津姫",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "小麦粉",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カレー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "屋根裏スタジオnico",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "工藝舎",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "帽子屋サンレビー",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "心花",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "思い出工房",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "悟~satori~カフェ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング",
+        "文化体験・体験",
+        "宿泊"
+      ],
+      "genres": [
+        "カフェ",
+        "お菓子",
+        "食べ物",
+        "文化体験",
+        "その他",
+        "飲食",
+        "宿泊"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3,
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "name": "春日ホテル",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "旅館"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "春日庵",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷",
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3,
+        6
+      ]
+    },
+    {
+      "name": "春日庵 茶房",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "体験",
+        "カフェ",
+        "かき氷"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "春日物産",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "工芸品",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "時計じかけのオレンジ",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "ファッション"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "月日亭近鉄奈良駅前店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "本とカレーのお店 ミジンコブンコ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カレー",
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "本家菊屋 奈良店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "本家菊屋 学園前店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "本家菊屋 近鉄奈良店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お土産・ショッピング"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "来々軒",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "中華",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "東大寺絵馬堂茶屋",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "その他",
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "東横イン奈良新大宮駅前",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "東横イン近鉄奈良駅前",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "松の餅",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "染谷商店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "和食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "柿の葉ずし 登大路店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "和食"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "柿の葉茶専門 SOSUKE by ほうせき箱",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "株式会社J-CUBE",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "株式会社あほうどり 猿沢池西売店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "株式会社エビスヤ",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "株式会社柴田衣料店/かぎろひ屋",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6,
+        8
+      ]
+    },
+    {
+      "name": "株式會社今西本店",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        2,
+        6
+      ]
+    },
+    {
+      "name": "桃花源",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "居酒屋"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "桜きもの京都",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "梅古庵",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "ラーメン",
+        "麺類（うどん・そば等）",
+        "工芸品",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3,
+        7
+      ]
+    },
+    {
+      "name": "梅古庵 奈良紅工房（園生の森神社）",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "植村牧場",
+      "sections": [
+        "グルメ・カフェ",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "アウトドア体験",
+        "その他",
+        "カフェ",
+        "飲食",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3,
+        8
+      ]
+    },
+    {
+      "name": "植村牧場 直売所",
+      "sections": [
+        "グルメ・カフェ",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "その他",
+        "体験",
+        "アウトドア体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3,
+        8
+      ]
+    },
+    {
+      "name": "江戸川ならまち店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "洋菓子の店マルキーズ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他",
+        "お菓子"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3,
+        7
+      ]
+    },
+    {
+      "name": "洋食 春",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "洋食"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "洋食・洋風居酒屋ロッソ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "洋食",
+        "居酒屋",
+        "バー",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "炭焼き酒場 かめ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "ラーメン",
+        "居酒屋",
+        "ナイトマップ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "焼きたてパン工房 MOGURY",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "ベーカリー"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "焼肉丼一（はじめ）",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "焼肉"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "焼肉工房わらく",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "焼肉",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "焼肉製作所 神神 (カガミ)",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "焼肉",
+        "飲食",
+        "ナイトマップ"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "猫喫茶花衣",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "その他",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "猫雑貨さんちこ",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "食べ物",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "猿沢豆花",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "その他",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "田原ナチュラル・ファーム",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "食べ物",
+        "その他",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        7,
+        9
+      ]
+    },
+    {
+      "name": "町屋フォトスタジオ希ノ和",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "発酵薬膳料理＆かふぇ らふぁえろ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "カフェ"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "百楽荘",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "着物あそび にっこり",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "着物＆香salon 縁心屋",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "石田貸衣裳",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "砂糖傳増尾商店",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "竜の家",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "ナイトマップ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "紫翠 ラグジュアリーコレクションホテル 奈良",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "編物倶楽部 Amimono Amumono.",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "肉まん専門店 寶鹿亭",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "菊岡漢方薬局",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "その他",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "華ならまち",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "ホテル",
+        "宿泊"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "蕎麦処 季のせ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "蘭奢待",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "宿泊",
+        "ホテル"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "蘭奢待Premium",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "宿泊",
+        "ホテル"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "西の京みやげ処きとら",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "お酒",
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "西ノ京 布細工（ぶさいく）はぎれ工房",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "工芸品",
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        6,
+        8
+      ]
+    },
+    {
+      "name": "観光ホテルタマル",
+      "sections": [
+        "宿泊"
+      ],
+      "genres": [
+        "宿泊",
+        "ホテル"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        10
+      ]
+    },
+    {
+      "name": "赤膚焼 大塩恵旦",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    },
+    {
+      "name": "赤膚焼大塩正士陶房",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "工芸品",
+        "文化体験"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6,
+        8
+      ]
+    },
+    {
+      "name": "赤膚焼窯元 大塩昭山",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "工芸品",
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        6,
+        9
+      ]
+    },
+    {
+      "name": "足のお悩み研究所",
+      "sections": [
+        "お土産・ショッピング",
+        "サービス"
+      ],
+      "genres": [
+        "その他",
+        "その他サービス",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        6,
+        11
+      ]
+    },
+    {
+      "name": "路地裏のおにぎり屋さん 一穂二穂",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "和食"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "近藤精肉店",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "焼肉",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3,
+        6
+      ]
+    },
+    {
+      "name": "追分梅園",
+      "sections": [
+        "お土産・ショッピング",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "食べ物",
+        "その他",
+        "アウトドア体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        6,
+        9
+      ]
+    },
+    {
+      "name": "遊悠工房ZOO&かぎろひ",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        9
+      ]
+    },
+    {
+      "name": "重乃井",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "麺類（うどん・そば等）",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "釜めし茶漬けGRANCHA",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "郷土料理・大和野菜",
+        "和食",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "銀河食堂",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "飲食",
+        "和食",
+        "洋食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        4
+      ]
+    },
+    {
+      "name": "銀雪の里カフェ",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "銀雪の里窯",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "鍼灸治療院 5N'",
+      "sections": [
+        "サービス"
+      ],
+      "genres": [
+        "その他サービス"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        11
+      ]
+    },
+    {
+      "name": "隠れ家 志希",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2
+      ]
+    },
+    {
+      "name": "革遊びHARUHINO",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "工芸品"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        6
+      ]
+    },
+    {
+      "name": "駅舎カフェ ハテノミドリ",
+      "sections": [
+        "グルメ・カフェ",
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "カフェ",
+        "かき氷",
+        "その他",
+        "工芸品",
+        "食べ物",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        2,
+        6
+      ]
+    },
+    {
+      "name": "魚万本店",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "その他"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "鳥料理 悠庵",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "居酒屋"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "鹿の舟 囀",
+      "sections": [
+        "グルメ・カフェ"
+      ],
+      "genres": [
+        "カフェ",
+        "お菓子",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3
+      ]
+    },
+    {
+      "name": "鹿の舟 竈",
+      "sections": [
+        "グルメ・カフェ",
+        "文化体験・体験"
+      ],
+      "genres": [
+        "和食",
+        "カフェ",
+        "文化体験",
+        "飲食"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        3,
+        8
+      ]
+    },
+    {
+      "name": "鹿の舟 繭",
+      "sections": [
+        "文化体験・体験"
+      ],
+      "genres": [
+        "工芸品",
+        "文化体験",
+        "体験"
+      ],
+      "narafuru": true,
+      "sourcePages": [
+        8
+      ]
+    },
+    {
+      "name": "鹿野 ROKUYA",
+      "sections": [
+        "お土産・ショッピング"
+      ],
+      "genres": [
+        "お菓子",
+        "食べ物"
+      ],
+      "narafuru": false,
+      "sourcePages": [
+        7
+      ]
+    }
+  ]
+}
