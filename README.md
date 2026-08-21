@@ -1,3 +1,4 @@
+aaaaaaaaaaaaaaaaaaa
 # 奈良よりみち
 
 SHIKA no ASHIATO掲載スポットを使い、旅行者の予定・空き時間・予算に合う奈良の寄り道ルートを提案するWebアプリのプロトタイプです。
