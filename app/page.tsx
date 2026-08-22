@@ -259,25 +259,115 @@ export default function Home() {
 
       <footer><div className="brand"><span className="brand-mark">奈</span><span>奈良よりみち</span></div><p>SHIKA no ASHIATO 掲載スポットを活かしたルート提案プロトタイプ</p><a href="https://www.city.nara.lg.jp/site/shikanoashiato/201908.html" target="_blank" rel="noreferrer">データ出典：奈良市公式ページ ↗</a></footer>
 
-      {activeSpot && (
-        <div className="modal-backdrop" role="presentation"><button type="button" className="backdrop-close" aria-label="閉じる" onClick={() => setActiveSpot(null)} />
-          <section className="spot-modal" role="dialog" aria-modal="true" aria-labelledby="spot-title">
-            <button className="close-button" onClick={() => setActiveSpot(null)} aria-label="閉じる">×</button>
-            <div className="spot-image" style={{ backgroundImage: `url("${activeSpot.image}")` }}><span>SHIKA no ASHIATO 掲載</span></div>
-            <div className="spot-modal-body"><p className="spot-type">{activeSpot.type}</p><h2 id="spot-title">{activeSpot.name}</h2><p className="spot-note">{activeSpot.note}</p><dl><div><dt>目安料金</dt><dd>{activeSpot.price}</dd></div><div><dt>目安滞在</dt><dd>{activeSpot.stay}</dd></div><div><dt>住所</dt><dd>{activeSpot.address}</dd></div><div><dt>緯度・経度</dt><dd>{activeSpot.lat.toFixed(6)}, {activeSpot.lng.toFixed(6)}</dd></div></dl><div className="map-actions"><a href={mapsUrl(activeSpot)} target="_blank" rel="noreferrer">Google マップ</a><a href={streetViewUrl(activeSpot)} target="_blank" rel="noreferrer">Street View</a></div><small>{activeSpot.sourceNote}<br />写真は店舗公式または周辺イメージ。価格・営業時間は変わる場合があります。</small></div>
+     {activeSpot && (
+        <div 
+          className="modal-backdrop" 
+          role="presentation" 
+          style={{ 
+            position: 'fixed', 
+            inset: 0, 
+            zIndex: 99999, 
+            backgroundColor: 'rgba(0, 0, 0, 0.6)', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            padding: '16px'
+          }}
+        >
+          <button 
+            type="button" 
+            className="backdrop-close" 
+            aria-label="閉じる" 
+            onClick={() => setActiveSpot(null)} 
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none', background: 'transparent' }}
+          />
+          <section 
+            className="spot-modal" 
+            role="dialog" 
+            aria-modal="true" 
+            aria-labelledby="spot-title"
+            style={{ 
+              position: 'relative', 
+              zIndex: 100000, 
+              backgroundColor: '#fff', 
+              borderRadius: '16px', 
+              maxWidth: '520px', 
+              width: '100%', 
+              maxHeight: '90vh', 
+              overflowY: 'auto', 
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3)' 
+            }}
+          >
+            <button 
+              className="close-button" 
+              onClick={() => setActiveSpot(null)} 
+              aria-label="閉じる"
+              style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10, cursor: 'pointer', fontSize: '20px', border: 'none', background: 'transparent' }}
+            >
+              ×
+            </button>
+            <div className="spot-image" style={{ backgroundImage: `url("${activeSpot.image}")`, height: '220px', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative' }}>
+              <span style={{ position: 'absolute', bottom: '8px', left: '8px', backgroundColor: 'rgba(0,0,0,0.7)', color: '#fff', padding: '4px 8px', borderRadius: '4px', fontSize: '11px' }}>
+                SHIKA no ASHIATO 掲載
+              </span>
+            </div>
+            <div className="spot-modal-body" style={{ padding: '20px' }}>
+              <p className="spot-type" style={{ fontSize: '12px', color: '#059669', fontWeight: 'bold' }}>{activeSpot.type}</p>
+              <h2 id="spot-title" style={{ fontSize: '20px', fontWeight: 'bold', margin: '4px 0 12px' }}>{activeSpot.name}</h2>
+              <p className="spot-note" style={{ fontSize: '14px', color: '#4b5563', marginBottom: '16px' }}>{activeSpot.note}</p>
+              <dl style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', fontSize: '13px', background: '#f9fafb', padding: '12px', borderRadius: '8px', marginBottom: '16px' }}>
+                <div><dt style={{ color: '#9ca3af', fontSize: '11px' }}>目安料金</dt><dd style={{ fontWeight: 'bold' }}>{activeSpot.price}</dd></div>
+                <div><dt style={{ color: '#9ca3af', fontSize: '11px' }}>目安滞在</dt><dd style={{ fontWeight: 'bold' }}>{activeSpot.stay}</dd></div>
+                <div style={{ gridColumn: 'span 2' }}><dt style={{ color: '#9ca3af', fontSize: '11px' }}>住所</dt><dd>{activeSpot.address}</dd></div>
+              </dl>
+              <div className="map-actions" style={{ display: 'flex', gap: '8px', marginBottom: '12px' }}>
+                <a href={mapsUrl(activeSpot)} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: 'center', padding: '10px', backgroundColor: '#18181b', color: '#fff', borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>Google マップ</a>
+                <a href={streetViewUrl(activeSpot)} target="_blank" rel="noreferrer" style={{ flex: 1, textAlign: 'center', padding: '10px', backgroundColor: '#f4f4f5', color: '#18181b', borderRadius: '8px', fontSize: '13px', textDecoration: 'none' }}>Street View</a>
+              </div>
+              <small style={{ fontSize: '11px', color: '#9ca3af', display: 'block', lineHeight: 1.4 }}>{activeSpot.sourceNote}<br />写真は店舗公式または周辺イメージ。価格・営業時間は変わる場合があります。</small>
+            </div>
           </section>
         </div>
       )}
 
       {catalogOpen && (
-        <div className="catalog-backdrop" role="presentation"><button type="button" className="backdrop-close" aria-label="閉じる" onClick={() => setCatalogOpen(false)} />
+        <div className="catalog-backdrop" role="presentation">
+          <button type="button" className="backdrop-close" aria-label="閉じる" onClick={() => setCatalogOpen(false)} />
           <aside className="catalog-panel" role="dialog" aria-modal="true" aria-labelledby="catalog-title">
-            <header><div><p>SHIKA no ASHIATO 公式PDF</p><h2 id="catalog-title">全{catalog.count}件のスポット</h2></div><button onClick={() => setCatalogOpen(false)} aria-label="閉じる">×</button></header>
-            <div className="catalog-tools"><label><span>店名・ジャンルを検索</span><input ref={catalogSearchRef} placeholder="カフェ、宿泊、工芸品…" value={catalogQuery} onChange={(e) => { setCatalogQuery(e.target.value); setVisibleCount(30); }} /></label><div className="category-chips">{sections.map((section) => <button key={section} className={catalogSection === section ? "active" : ""} onClick={() => { setCatalogSection(section); setVisibleCount(30); }}>{section}</button>)}</div></div>
+            <header>
+              <div><p>SHIKA no ASHIATO 公式PDF</p><h2 id="catalog-title">全{catalog.count}件のスポット</h2></div>
+              <button onClick={() => setCatalogOpen(false)} aria-label="閉じる">×</button>
+            </header>
+            <div className="catalog-tools">
+              <label>
+                <span>店名・ジャンルを検索</span>
+                <input ref={catalogSearchRef} placeholder="カフェ、宿泊、工芸品…" value={catalogQuery} onChange={(e) => { setCatalogQuery(e.target.value); setVisibleCount(30); }} />
+              </label>
+              <div className="category-chips">
+                {sections.map((section) => (
+                  <button key={section} className={catalogSection === section ? "active" : ""} onClick={() => { setCatalogSection(section); setVisibleCount(30); }}>{section}</button>
+                ))}
+              </div>
+            </div>
             <div className="catalog-count"><strong>{filteredCatalog.length}</strong>件が該当 <span>● は「ならふる」対応</span></div>
-            <div className="catalog-list">{filteredCatalog.slice(0, visibleCount).map((item) => <article key={item.name}><div><h3>{item.name}</h3><p>{item.genres.join(" / ")}</p></div><div className="catalog-tags">{item.narafuru && <span className="narafuru">● ならふる</span>}{item.sections.slice(0,2).map((section) => <span key={section}>{section}</span>)}</div></article>)}</div>
-            {visibleCount < filteredCatalog.length && <button className="load-more" onClick={() => setVisibleCount((count) => count + 30)}>さらに30件表示</button>}
-            <footer><a href="https://www.city.nara.lg.jp/uploaded/attachment/204172.pdf" target="_blank" rel="noreferrer">元の公式PDFを開く ↗</a><span>PDF 1〜11ページを構造化</span></footer>
+            <div className="catalog-list">
+              {filteredCatalog.slice(0, visibleCount).map((item) => (
+                <article key={item.name}>
+                  <div><h3>{item.name}</h3><p>{item.genres.join(" / ")}</p></div>
+                  <div className="catalog-tags">
+                    {item.narafuru && <span className="narafuru">● ならふる</span>}
+                    {item.sections.slice(0, 2).map((section) => <span key={section}>{section}</span>)}
+                  </div>
+                </article>
+              ))}
+            </div>
+            {visibleCount < filteredCatalog.length && (
+              <button className="load-more" onClick={() => setVisibleCount((count) => count + 30)}>さらに30件表示</button>
+            )}
+            <footer>
+              <a href="https://www.city.nara.lg.jp/uploaded/attachment/204172.pdf" target="_blank" rel="noreferrer">元の公式PDFを開く ↗</a>
+              <span>PDF 1〜11ページを構造化</span>
+            </footer>
           </aside>
         </div>
       )}

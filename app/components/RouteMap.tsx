@@ -35,15 +35,6 @@ type RouteMapProps<T extends RouteMapSpot> = {
   onSelectSpot: (spot: T) => void;
 };
 
-/**
- * OpenStreetMap のタイルを Leaflet で表示する地図。
- *
- * react-leaflet は使わず、useEffect の中で Leaflet を動的 import して直接操作する
- * （SSR時に window に触れることを避けるため）。
- * ピンの座標は選択中ルートの立ち寄り先（spot.lat / spot.lng）と、
- * プロトタイプの固定値である近鉄奈良駅（NARA_STATION）を使う。
- * START → 各立ち寄り先 → GOAL の線は直線の目安表示であり、実際の道なりの経路ではない。
- */
 export default function RouteMap<T extends RouteMapSpot>({
   routeId,
   routeColor,
@@ -56,7 +47,7 @@ export default function RouteMap<T extends RouteMapSpot>({
   const layersRef = useRef<{ markers: Marker[]; line: Polyline | null }>({ markers: [], line: null });
   const [mapReady, setMapReady] = useState(false);
 
-  // 地図本体の初期化・後片付け（マウント中に1回だけ）
+  // 地図本体の初期化
   useEffect(() => {
     let cancelled = false;
 
@@ -79,7 +70,7 @@ export default function RouteMap<T extends RouteMapSpot>({
     };
   }, []);
 
-  // ルート切り替えのたびに、ピン・線・表示範囲を張り替える(地図の初期化が終わってから)
+  // ルート切り替え時のマーカー・ライン再描画
   useEffect(() => {
     let cancelled = false;
     if (!mapReady) return;
@@ -94,7 +85,6 @@ export default function RouteMap<T extends RouteMapSpot>({
       layersRef.current.line?.remove();
       layersRef.current.line = null;
 
-      // Spot 側には id が無いため、ここでは配列の添字を id として使う。
       const stopInputs: StopInput[] = stops.map((stop, index) => ({
         id: String(index),
         name: stop.spot.name,
@@ -107,29 +97,50 @@ export default function RouteMap<T extends RouteMapSpot>({
       if (line.length >= 2) {
         layersRef.current.line = L.polyline(
           line.map((point) => [point.lat, point.lng]),
-          { color: routeColor, weight: 4, dashArray: "2 10", lineCap: "round" },
+          { color: routeColor, weight: 4, dashArray: "4 8", lineCap: "round" },
         ).addTo(map);
       }
 
       for (const point of points) {
         const isOrigin = point.kind === "origin";
+
+        // ピンとラベルが重ならないHTMLとスタイルを直接注入
+        const html = isOrigin
+          ? `<div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;">
+               <div style="background:#1c1917;color:#fff;border-radius:50%;width:50px;height:50px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:bold;line-height:1.1;box-shadow:0 4px 6px -1px rgba(0,0,0,0.3);border:2px solid #fff;">
+                 START<br/>&amp; GOAL
+               </div>
+             </div>`
+          : `<div style="display:flex;flex-direction:column;align-items:center;cursor:pointer;width:160px;margin-left:-80px;">
+               <div style="background:#dc2626;color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:bold;box-shadow:0 4px 6px -1px rgba(0,0,0,0.3);border:2px solid #fff;">
+                 ${point.order}
+               </div>
+               <div style="margin-top:4px;background:rgba(255,255,255,0.95);color:#1c1917;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:bold;white-space:nowrap;box-shadow:0 2px 4px rgba(0,0,0,0.15);border:1px solid rgba(0,0,0,0.08);pointer-events:auto;">
+                 ${escapeHtml(point.label)}
+               </div>
+             </div>`;
+
         const icon = L.divIcon({
-          className: "route-map-pin-wrap",
-          html: isOrigin
-            ? `<span class="route-map-pin route-map-pin-origin">START<br />&amp; GOAL</span>`
-            : `<span class="route-map-pin route-map-pin-stop"><i>${point.order}</i><b>${escapeHtml(point.label)}</b></span>`,
-          iconSize: isOrigin ? [58, 58] : [44, 44],
-          iconAnchor: isOrigin ? [29, 29] : [22, 22],
+          className: "custom-map-pin",
+          html: html,
+          iconSize: isOrigin ? [50, 50] : [32, 55],
+          iconAnchor: isOrigin ? [25, 25] : [16, 16],
         });
+
         const marker = L.marker([point.lat, point.lng], {
           icon,
           keyboard: true,
-          alt: isOrigin ? "出発・帰着地点" : `${point.label}の詳細`,
+          zIndexOffset: isOrigin ? 100 : 500, // ピンの基本重なり順
         }).addTo(map);
 
         if (!isOrigin) {
           const spot = stops[Number(point.id)]?.spot;
-          if (spot) marker.on("click", () => onSelectSpot(spot));
+          if (spot) {
+            marker.on("click", () => {
+              marker.setZIndexOffset(1000); // クリックしたピンを一番手前に持ってくる
+              onSelectSpot(spot);
+            });
+          }
         }
 
         layersRef.current.markers.push(marker);
@@ -142,7 +153,7 @@ export default function RouteMap<T extends RouteMapSpot>({
             [bounds.southWest.lat, bounds.southWest.lng],
             [bounds.northEast.lat, bounds.northEast.lng],
           ],
-          { padding: [40, 40] },
+          { padding: [50, 50] },
         );
       }
     })();
