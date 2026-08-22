@@ -55,7 +55,7 @@ export default function Home() {
   const [catalogSection, setCatalogSection] = useState("すべて");
   const [visibleCount, setVisibleCount] = useState(30);
   const [form, setForm] = useState({
-    date: "2026-09-12", schedule: "10:00 東大寺を見学\n14:30 近鉄奈良駅で友人と合流", freeStart: "11:30", freeEnd: "14:15",
+    date: "2026-09-12", schedule: "ex) 10:00 東大寺を見学\n 14:30 近鉄奈良駅で友人と合流", freeStart: "11:30", freeEnd: "14:15",
     duration: "2時間30分", budget: "3000", start: "近鉄奈良駅", returnTo: "近鉄奈良駅", notes: "ならまち、静かな店、甘いもの",
   });
 
@@ -147,7 +147,11 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">NARA ROUTE PLANNER</p>
-          <h1>奈良ならではの<br /><em>ひとときを</em></h1>
+          <h1>
+  <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>奈良ならではの、</span>
+  <br />
+  <span style={{ display: "inline-block", whiteSpace: "nowrap" }}><em>ひとときを</em></span>
+</h1>
           <p className="lead">決まっている予定を崩さず、予算と空き時間に収まる3つの寄り道ルートをつくります。</p>
           <div className="promise-row" aria-label="サービスの特徴"><span>予算内</span><span>移動時間込み</span><span>出発地へ戻る</span></div>
           <div className="catalog-summary">
