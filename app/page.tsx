@@ -148,7 +148,7 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">NARA ROUTE PLANNER</p>
           <h1>
-  <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>奈良ならではの、</span>
+  <span style={{ display: "inline-block", whiteSpace: "nowrap" }}>奈良ならではの</span>
   <br />
   <span style={{ display: "inline-block", whiteSpace: "nowrap" }}><em>ひとときを</em></span>
 </h1>
