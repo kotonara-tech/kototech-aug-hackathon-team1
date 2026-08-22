@@ -8,7 +8,11 @@ import {
   buildMapPoints,
   buildWalkLine,
   computeBounds,
+  pointAtProgress,
+  triangleWave,
+  headingFromDelta,
   type StopInput,
+  type LatLng,
 } from "../lib/map-view";
 
 /** OpenStreetMap のタイル利用ポリシー上、帰属表示は必須。 */
@@ -45,6 +49,10 @@ export default function RouteMap<T extends RouteMapSpot>({
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<LeafletMap | null>(null);
   const layersRef = useRef<{ markers: Marker[]; line: Polyline | null }>({ markers: [], line: null });
+  const deerMarkerRef = useRef<Marker | null>(null);
+  const deerLineRef = useRef<LatLng[]>([]);
+  const deerRafRef = useRef<number | null>(null);
+  const deerStartRef = useRef<number | null>(null);
   const [mapReady, setMapReady] = useState(false);
 
   // 地図本体の初期化
@@ -93,6 +101,11 @@ export default function RouteMap<T extends RouteMapSpot>({
       }));
       const points = buildMapPoints(stopInputs, NARA_STATION);
       const line = buildWalkLine(NARA_STATION, stopInputs, NARA_STATION);
+
+      // 鹿アニメーション用に折れ線を保存。ルート切り替え時に鹿が新しい線を歩き直す。
+      deerLineRef.current = line;
+      // 鹿の開始時刻をリセットして新ルートの始点から歩き直す
+      deerStartRef.current = null;
 
       if (line.length >= 2) {
         layersRef.current.line = L.polyline(
@@ -162,6 +175,111 @@ export default function RouteMap<T extends RouteMapSpot>({
       cancelled = true;
     };
   }, [routeId, routeColor, stops, onSelectSpot, mapReady]);
+
+  // 鹿マーカーが折れ線を往復するアニメーション
+  useEffect(() => {
+    if (!mapReady) return;
+
+    const PERIOD_MS = 12000; // 往復1サイクル12秒
+
+    function buildDeerHtml(facingWest: boolean): string {
+      const flip = facingWest ? "transform:scaleX(-1);" : "";
+      return `<div class="deer-map-marker" style="${flip}pointer-events:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="36" height="36" aria-hidden="true">
+          <line x1="16" y1="6" x2="11" y2="1" stroke="#7a5c3a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="11" y1="1" x2="8" y2="4" stroke="#7a5c3a" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="16" y1="6" x2="21" y2="2" stroke="#7a5c3a" stroke-width="2" stroke-linecap="round"/>
+          <line x1="21" y1="2" x2="24" y2="5" stroke="#7a5c3a" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="16" cy="11" rx="6" ry="5" fill="#b07a45"/>
+          <ellipse cx="9" cy="9" rx="3" ry="2" fill="#b07a45" transform="rotate(-20 9 9)"/>
+          <ellipse cx="9" cy="13" rx="1.5" ry="1.2" fill="#8a5c30"/>
+          <circle cx="13" cy="9" r="1.2" fill="#3a2510"/>
+          <ellipse cx="27" cy="26" rx="11" ry="8" fill="#b07a45"/>
+          <ellipse cx="36" cy="28" rx="6" ry="5" fill="#c4935a"/>
+          <polygon points="14,16 19,14 21,22 16,24" fill="#b07a45"/>
+          <line x1="18" y1="32" x2="16" y2="44" stroke="#8a5c30" stroke-width="3" stroke-linecap="round"/>
+          <line x1="34" y1="32" x2="36" y2="44" stroke="#8a5c30" stroke-width="3" stroke-linecap="round"/>
+          <line x1="20" y1="32" x2="18" y2="44" stroke="#7a5025" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="32" y1="32" x2="34" y2="44" stroke="#7a5025" stroke-width="2.5" stroke-linecap="round"/>
+          <ellipse cx="40" cy="24" rx="2.5" ry="1.5" fill="#f0e8d8"/>
+        </svg>
+      </div>`;
+    }
+
+    let cancelled = false;
+
+    (async () => {
+      const L = await import("leaflet");
+      const map = mapRef.current;
+      if (cancelled || !map) return;
+
+      // prefers-reduced-motion チェック
+      const prefersReduced = typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const line = deerLineRef.current;
+      if (line.length < 2) return;
+
+      // 鹿マーカー（インタラクティブ無効）
+      const icon = L.divIcon({
+        className: "deer-map-marker",
+        html: buildDeerHtml(false),
+        iconSize: [36, 36],
+        iconAnchor: [18, 44],
+      });
+
+      const startPos = line[0];
+      const marker = L.marker([startPos.lat, startPos.lng], {
+        icon,
+        interactive: false,
+        keyboard: false,
+        zIndexOffset: -100,
+      }).addTo(map);
+      deerMarkerRef.current = marker;
+
+      if (prefersReduced) return; // アニメーション停止
+
+      function tick(timestamp: number) {
+        if (cancelled) return;
+
+        if (deerStartRef.current === null) deerStartRef.current = timestamp;
+        const elapsed = timestamp - deerStartRef.current;
+        const t = triangleWave(elapsed, PERIOD_MS);
+
+        const currentLine = deerLineRef.current;
+        if (currentLine.length >= 2) {
+          const progress = pointAtProgress(currentLine, t);
+          if (progress) {
+            const facingWest = headingFromDelta(progress.headingLng) === "west";
+            marker.setLatLng([progress.point.lat, progress.point.lng]);
+            marker.setIcon(
+              L.divIcon({
+                className: "deer-map-marker",
+                html: buildDeerHtml(facingWest),
+                iconSize: [36, 36],
+                iconAnchor: [18, 44],
+              }),
+            );
+          }
+        }
+
+        deerRafRef.current = requestAnimationFrame(tick);
+      }
+
+      deerRafRef.current = requestAnimationFrame(tick);
+    })();
+
+    return () => {
+      cancelled = true;
+      if (deerRafRef.current !== null) {
+        cancelAnimationFrame(deerRafRef.current);
+        deerRafRef.current = null;
+      }
+      deerStartRef.current = null;
+      deerMarkerRef.current?.remove();
+      deerMarkerRef.current = null;
+    };
+  }, [mapReady, routeId]);
 
   return (
     <div className="route-map" style={{ "--route-color": routeColor } as React.CSSProperties}>
