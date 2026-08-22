@@ -193,3 +193,21 @@ footer > p { flex: 1; } footer > a { color: var(--moss); text-decoration: none; 
   .route-map { min-height: 370px; }.itinerary { padding: 24px 19px; }.data-section { padding: 60px 0; gap: 35px; }.category-grid { grid-template-columns: 1fr; }
   footer { flex-wrap: wrap; padding: 28px 0; gap: 15px; }footer > p { flex-basis: 100%; order: 3; margin: 0; }.spot-modal { grid-template-columns: 1fr; }.spot-image { min-height: 230px; }.spot-modal-body { padding: 27px 22px; }.catalog-list article { padding-inline: 20px; }.catalog-tools,.catalog-panel > header,.catalog-count { padding-inline: 20px; }.catalog-tags { min-width: 100px; }
 }
+/* ========================================================
+   Leaflet 地図の吹き出し・テキストをピンより前面に出す設定
+   ======================================================== */
+.leaflet-popup-pane,
+.leaflet-tooltip-pane {
+  z-index: 700 !important; /* ピン(z-index: 600)より手前に強制表示 */
+}
+
+.leaflet-marker-pane {
+  z-index: 600 !important;
+}
+
+/* 吹き出しの文字が見切れず綺麗に出るように調整 */
+.leaflet-tooltip,
+.leaflet-popup-content-wrapper {
+  z-index: 999 !important;
+  pointer-events: auto !important;
+}
