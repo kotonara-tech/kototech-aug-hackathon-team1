@@ -15,7 +15,8 @@
  * 概算へ切り替え、どちらを使ったかを travelSource で返す。
  */
 
-import { SAMPLE_PLACES } from "../../lib/places";
+import { selectCandidates } from "../../lib/place-filter";
+import { ROUTE_PLACES } from "../../lib/route-places";
 import { estimateTravelMinutes, planRoutes, type Waypoint } from "../../lib/route-engine";
 import { buildRouteRequest, isKnownWaypoint, type RouteFormInput } from "../../lib/route-request";
 import { toRouteViews } from "../../lib/route-view";
@@ -62,16 +63,27 @@ export async function POST(request: Request): Promise<Response> {
   const goal = goalIsSameAsStart ? start : await upgradeWaypoint(built.request.goal, input.returnTo ?? "");
   const routeRequest = { ...built.request, start, goal };
 
+  // 候補が多いままだと、組み合わせの総当たりも徒歩時間表も現実的な大きさに収まらない。
+  // 予算・時間・出発地からの近さ・希望との一致で先に絞り込む。
+  const candidates = selectCandidates(ROUTE_PLACES, {
+    start,
+    goal,
+    notes: routeRequest.notes,
+    budget: routeRequest.budget,
+    availableMinutes: routeRequest.availableMinutes,
+    safetyBufferMinutes: routeRequest.safetyBufferMinutes,
+  });
+
   // 徒歩時間は総当たり表で1回だけ取る。取れなければ直線距離の概算へ戻す。
   const points: Point[] = [start];
   if (!samePoint(goal, start)) points.push(goal);
-  for (const place of SAMPLE_PLACES) points.push({ lat: place.lat, lng: place.lng });
+  for (const place of candidates) points.push({ lat: place.lat, lng: place.lng });
 
   const matrix = await travelMatrixMinutes(points);
   const lookup = buildTravelLookup(points, matrix);
   const travelMinutes = (from: Point, to: Point) => lookup(from, to) ?? estimateTravelMinutes(from, to);
 
-  const plans = planRoutes(SAMPLE_PLACES, routeRequest, { travelMinutes });
+  const plans = planRoutes(candidates, routeRequest, { travelMinutes });
   const routes = toRouteViews(plans, built.startClock ? { startClock: built.startClock } : {});
   const travelSource = matrix ? "osm" : "estimate";
 

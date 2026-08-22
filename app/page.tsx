@@ -2,7 +2,8 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import catalogJson from "./data/ashiato-spots.json";
-import { SAMPLE_PLACES } from "./lib/places";
+import { selectCandidates } from "./lib/place-filter";
+import { ROUTE_PLACES, ROUTE_PLACE_STATS } from "./lib/route-places";
 import { planRoutes } from "./lib/route-engine";
 import { buildRouteRequest, parseBudget } from "./lib/route-request";
 import { formatMinutes, toRouteViews, type RouteStopView, type RouteView } from "./lib/route-view";
@@ -73,7 +74,16 @@ export default function Home() {
   const previewRoutes = useMemo(() => {
     const built = buildRouteRequest({ mode, ...form });
     if (!built.ok) return [];
-    return toRouteViews(planRoutes(SAMPLE_PLACES, built.request), built.startClock ? { startClock: built.startClock } : {});
+    // 入力のたびに計算し直すので、候補は少なめに絞る。本番の計算はサーバー側で行う。
+    const candidates = selectCandidates(ROUTE_PLACES, {
+      start: built.request.start,
+      goal: built.request.goal,
+      notes: built.request.notes,
+      budget: built.request.budget,
+      availableMinutes: built.request.availableMinutes,
+      limit: 12,
+    });
+    return toRouteViews(planRoutes(candidates, built.request), built.startClock ? { startClock: built.startClock } : {});
   }, [mode, form]);
 
   const routes = result.status === "done" ? result.routes : [];
@@ -179,7 +189,10 @@ export default function Home() {
 
           <div className="return-note"><span className="return-icon">↩</span><p><strong>{form.returnTo || "出発地点"}に戻る時間まで計算</strong><br />行きっぱなしにならない往復ルートです</p></div>
           <button className="primary-button" type="submit" disabled={result.status === "loading"}>{result.status === "loading" ? "計算しています…" : <>3つのルートをつくる <span aria-hidden="true">→</span></>}</button>
-          <p className="microcopy">公式PDF掲載店・施設を優先。価格と移動時間はプロトタイプ試算です。</p>
+          <p className="microcopy">
+            公式PDF掲載{ROUTE_PLACE_STATS.catalogCount}件のうち、座標が揃った<strong>{ROUTE_PLACE_STATS.routeReadyCount}件</strong>からルートを組み立てます。
+            価格と滞在時間はカテゴリからの試算です。
+          </p>
         </form>
       </section>
 

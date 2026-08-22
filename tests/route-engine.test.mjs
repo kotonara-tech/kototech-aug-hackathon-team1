@@ -257,3 +257,49 @@ describe("好みの反映", () => {
     assert.deepEqual(PLACES, copy);
   });
 });
+
+describe("ジャンルの散らばり", () => {
+  const START = { name: "近鉄奈良駅", lat: 34.6844, lng: 135.8298 };
+
+  /** 出発地のすぐ近くに、同じ条件でジャンルだけ違う施設を並べる。 */
+  function place(id, genre, step) {
+    return {
+      id,
+      name: id,
+      type: "グルメ・カフェ",
+      lat: START.lat + step * 0.0005,
+      lng: START.lng,
+      cost: 800,
+      stayMinutes: 30,
+      genres: [genre, "グルメ・カフェ"],
+      shikaMember: true,
+    };
+  }
+
+  const POOL = [
+    place("cafe-a", "カフェ", 1),
+    place("cafe-b", "カフェ", 2),
+    place("cafe-c", "カフェ", 3),
+    place("wagashi", "和菓子", 4),
+    place("kougei", "工芸品", 5),
+  ];
+
+  const REQUEST = {
+    availableMinutes: 240,
+    budget: 5000,
+    start: START,
+    goal: START,
+  };
+
+  test("同じジャンルばかりのルートより、ジャンルが散らばるルートを上位にする", () => {
+    const [top] = planRoutes(POOL, REQUEST);
+    const genres = top.places.map((p) => p.genres[0]);
+    assert.equal(new Set(genres).size, genres.length, `同じジャンルが並んでいる: ${genres.join(", ")}`);
+  });
+
+  test("ジャンルが1種類しかなくても、ルートは作れる", () => {
+    const onlyCafes = POOL.filter((p) => p.genres[0] === "カフェ");
+    const plans = planRoutes(onlyCafes, REQUEST);
+    assert.ok(plans.length > 0, "候補が同じジャンルだけのときに提案が消えてはいけない");
+  });
+});
