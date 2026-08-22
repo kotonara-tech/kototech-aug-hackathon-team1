@@ -147,7 +147,7 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">NARA ROUTE PLANNER</p>
-          <h1>旅のすき間に、<br /><em>奈良のいい時間。</em></h1>
+          <h1>奈良ならではの<br /><em>ひとときを</em></h1>
           <p className="lead">決まっている予定を崩さず、予算と空き時間に収まる3つの寄り道ルートをつくります。</p>
           <div className="promise-row" aria-label="サービスの特徴"><span>予算内</span><span>移動時間込み</span><span>出発地へ戻る</span></div>
           <div className="catalog-summary">
@@ -299,7 +299,7 @@ export default function Home() {
       )}
 
       <section className="data-section">
-        <div><p className="eyebrow">OFFICIAL CATALOG</p><h2>PDFの全カテゴリを、<br />ルート候補に。</h2></div>
+        <div><p className="eyebrow">OFFICIAL CATALOG</p><h2>奈良ならではの<br />ひとときを</h2></div>
         <div className="category-grid">
           {[{n:188,t:"グルメ・カフェ"},{n:127,t:"お土産・ショッピング"},{n:67,t:"文化体験・体験"},{n:34,t:"宿泊"},{n:20,t:"サービス"}].map((item) => <button key={item.t} onClick={() => { setCatalogSection(item.t); setCatalogOpen(true); }}><span>{item.n}</span><strong>{item.t}</strong><small>一覧を見る →</small></button>)}
         </div>
