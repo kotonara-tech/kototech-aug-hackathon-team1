@@ -37,39 +37,19 @@ type RoutePlan = {
   stops: { time: string; travel: string; spot: Spot }[];
 };
 
-const catalog = catalogJson as { count: number; items: CatalogItem[] };
+/** ルート生成の状態。読み込み中・候補なし・エラーを画面で区別するために持つ。 */
+type ResultState =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "done"; routes: RouteView[]; message?: string; travelSource?: TravelSource }
+  | { status: "error"; error: string };
 
-const spots: Record<string, Spot> = {
-  kamado: {
-    name: "鹿の舟 竈", type: "和食・カフェ", address: "奈良市井上町11", price: "定食 2,200円〜", cost: 2200, stay: "45分",
-    lat: 34.6711, lng: 135.8302, image: "https://www.kuruminoki.co.jp/shikanofune/assets/og.png",
-    note: "奈良産のお米を薪の竈で炊く食堂。ご飯がなくなり次第終了。", sourceNote: "料金・営業時間：店舗公式サイト / 掲載属性：奈良市公式PDF",
-  },
-  nakanishi: {
-    name: "寧楽菓子司 中西与三郎", type: "和菓子・文化体験", address: "奈良市脇戸町23", price: "喫茶 約650円〜", cost: 650, stay: "30分",
-    lat: 34.6778, lng: 135.8306, image: "https://www.naramachi.jp/wp-content/uploads/2021/08/9766838868a32b3215fcf7c97b40b4f9.png",
-    note: "町家の庭を眺めながら奈良の和菓子を。和菓子作り体験もあります。", sourceNote: "住所・営業時間：店舗公式サイト / 掲載属性：奈良市公式PDF",
-  },
-  tanaka: {
-    name: "奈良筆 田中", type: "伝統工芸・文化体験", address: "奈良市公納堂町6", price: "筆づくり 1,600円〜", cost: 1600, stay: "50分",
-    lat: 34.6758, lng: 135.8317, image: "https://www.pref.nara.lg.jp/secure/318040/guidebook_2.pdf",
-    note: "伝統工芸士と奈良筆の仕上げ工程を体験。予約推奨。", sourceNote: "料金・住所：奈良県公式体験情報 / 掲載属性：奈良市公式PDF",
-  },
-  kanakana: {
-    name: "カナカナ", type: "町家カフェ・和食", address: "奈良市公納堂町13", price: "カナカナごはん 1,683円", cost: 1683, stay: "50分",
-    lat: 34.6759, lng: 135.8314, image: "https://kanakana.info/wordpress/wp-content/themes/kanakana/img/kanakana.jpg",
-    note: "ならまちの町家カフェ。小鉢が並ぶ名物ごはんは営業時間内いつでも注文可能。", sourceNote: "料金・住所：JR東海観光情報 / 掲載属性：奈良市公式PDF",
-  },
-  kitokito: {
-    name: "器人器人", type: "工芸品・文化体験", address: "奈良市東包永町61-2", price: "見学無料・小物 約1,760円〜", cost: 0, stay: "30分",
-    lat: 34.692104, lng: 135.832627, image: "https://www.locoporvino.com/uploads/7/5/0/3/75033277/p1568_orig.png",
-    note: "きたまちの古民家で、陶磁器や木工など作家ものの手仕事を探せます。", sourceNote: "住所・座標：NAVITIME / 掲載属性：奈良市公式PDF",
-  },
-  yusai: {
-    name: "奈良酒専門店 なら泉勇斎", type: "日本酒・飲食", address: "奈良市西寺林町22", price: "利き酒 約500円〜", cost: 500, stay: "30分",
-    lat: 34.6791, lng: 135.8281, image: "https://www.naraizumi.jp/assets/uploads/ogp.jpg",
-    note: "奈良県内の酒蔵から約120種。好みを相談しながら有料試飲ができます。", sourceNote: "住所・営業時間：店舗公式サイト / 掲載属性：奈良市公式PDF",
-  },
+/** 徒歩時間の出どころ。osm は実際の徒歩ルート、estimate は直線距離からの概算。 */
+type TravelSource = "osm" | "estimate";
+
+const TRAVEL_SOURCE_NOTE: Record<TravelSource, string> = {
+  osm: "徒歩時間は OpenStreetMap の徒歩ルートから取得した所要時間です。料金と滞在時間は目安です。",
+  estimate: "外部サービスへ接続できなかったため、徒歩時間は直線距離からの概算です。実際はこれより長くかかります。",
 };
 
 const routes: RoutePlan[] = [
@@ -101,19 +81,19 @@ const routes: RoutePlan[] = [
 
 const sections = ["すべて", "グルメ・カフェ", "お土産・ショッピング", "文化体験・体験", "宿泊", "サービス"];
 
-function mapsUrl(spot: Spot) {
+function mapsUrl(spot: { name: string; address: string }) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${spot.name} ${spot.address}`)}`;
 }
 
-function streetViewUrl(spot: Spot) {
+function streetViewUrl(spot: { lat: number; lng: number }) {
   return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${spot.lat},${spot.lng}`;
 }
 
 export default function Home() {
   const [mode, setMode] = useState<TripMode>("planned");
-  const [generated, setGenerated] = useState(false);
+  const [result, setResult] = useState<ResultState>({ status: "idle" });
   const [selectedRoute, setSelectedRoute] = useState(0);
-  const [activeSpot, setActiveSpot] = useState<Spot | null>(null);
+  const [activeSpot, setActiveSpot] = useState<RouteStopView | null>(null);
   const [catalogOpen, setCatalogOpen] = useState(false);
   const [catalogQuery, setCatalogQuery] = useState("");
   const [catalogSection, setCatalogSection] = useState("すべて");
@@ -132,8 +112,18 @@ export default function Home() {
     });
   }, [catalogQuery, catalogSection]);
 
-  const budget = Number(form.budget.replace(/[^0-9]/g, "")) || 0;
-  const activeRoute = routes[selectedRoute];
+  const budget = parseBudget(form.budget);
+
+  // 入力前に見せるイメージも、固定値ではなく同じ計算から作る。
+  // サーバー側の初回描画でも動くよう、fetch ではなく直接エンジンを呼ぶ。
+  const previewRoutes = useMemo(() => {
+    const built = buildRouteRequest({ mode, ...form });
+    if (!built.ok) return [];
+    return toRouteViews(planRoutes(SAMPLE_PLACES, built.request), built.startClock ? { startClock: built.startClock } : {});
+  }, [mode, form]);
+
+  const routes = result.status === "done" ? result.routes : [];
+  const activeRoute = routes[selectedRoute] ?? routes[0];
 
   const catalogSearchRef = useRef<HTMLInputElement>(null);
 
@@ -154,11 +144,27 @@ export default function Home() {
 
   const update = (key: keyof typeof form, value: string) => setForm((current) => ({ ...current, [key]: value }));
 
-  const generate = (event: FormEvent) => {
+  const generate = async (event: FormEvent) => {
     event.preventDefault();
-    setGenerated(true);
     setSelectedRoute(0);
+    setResult({ status: "loading" });
     window.setTimeout(() => document.getElementById("routes")?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+
+    try {
+      const response = await fetch("/api/routes", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ mode, ...form }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        setResult({ status: "error", error: data?.error ?? "ルートを作れませんでした。入力内容をご確認ください。" });
+        return;
+      }
+      setResult({ status: "done", routes: data.routes ?? [], message: data.message, travelSource: data.travelSource });
+    } catch {
+      setResult({ status: "error", error: "ルートの取得に失敗しました。通信環境を確認して、もう一度お試しください。" });
+    }
   };
 
   return (
@@ -207,47 +213,39 @@ export default function Home() {
               </>
             ) : (
               <>
-                <label className="field"><span>使える時間</span><select value={form.duration} onChange={(e) => update("duration", e.target.value)}><option>1時間</option><option>1時間30分</option><option>2時間</option><option>2時間30分</option><option>3時間</option><option>半日</option></select></label>
+                <label className="field"><span>使える時間</span><select value={form.duration} onChange={(e) => update("duration", e.target.value)}><option>1時間</option><option>1時間30分</option><option>2時間</option><option>2時間30分</option><option>3時間</option><option>4時間</option></select></label>
                 <label className="field"><span>予算 / 1人</span><div className="input-unit"><input inputMode="numeric" value={form.budget} onChange={(e) => update("budget", e.target.value)} /><b>円</b></div></label>
               </>
             )}
 
-            <label className="field"><span>出発地点</span><div className="location-input"><input value={form.start} onChange={(e) => update("start", e.target.value)} /><button type="button" onClick={() => update("start", "現在地（近鉄奈良駅付近）")}>現在地</button></div></label>
+            <label className="field"><span>出発地点</span><div className="location-input"><input value={form.start} onChange={(e) => update("start", e.target.value)} /><button type="button" onClick={() => update("start", "近鉄奈良駅")}>現在地</button></div></label>
             <label className="field"><span>最後に戻る場所</span><input value={form.returnTo} onChange={(e) => update("returnTo", e.target.value)} /></label>
             <label className="field field-wide"><span>備考：行きたい場所・食べたいもの・地域</span><input value={form.notes} onChange={(e) => update("notes", e.target.value)} placeholder="例：ならまち、静かなカフェ、甘いもの" /></label>
           </div>
 
           <div className="return-note"><span className="return-icon">↩</span><p><strong>{form.returnTo || "出発地点"}に戻る時間まで計算</strong><br />行きっぱなしにならない往復ルートです</p></div>
-          <button className="primary-button" type="submit">3つのルートをつくる <span aria-hidden="true">→</span></button>
+          <button className="primary-button" type="submit" disabled={result.status === "loading"}>{result.status === "loading" ? "計算しています…" : <>3つのルートをつくる <span aria-hidden="true">→</span></>}</button>
           <p className="microcopy">公式PDF掲載店・施設を優先。価格と移動時間はプロトタイプ試算です。</p>
         </form>
       </section>
 
-      {!generated && (
+      {result.status === "idle" && (
         <section className="preview-strip" aria-label="提案ルートのイメージ">
-          <div className="preview-label"><span className="dot" /><p>提案イメージ</p><strong>予定に間に合う<br />3つの選択肢</strong></div>
-          {routes.map((route) => <article className="route-teaser" key={route.id}><span>ROUTE {route.id}</span><h2>{route.title}</h2><p>{route.duration}・{route.total.toLocaleString()}円</p></article>)}
+          <div className="preview-label"><span className="dot" /><p>提案イメージ（概算）</p><strong>予定に間に合う<br />3つの選択肢</strong><small>ボタンを押すと実際の徒歩時間で計算し直します</small></div>
+          {previewRoutes.map((route) => <article className="route-teaser" key={route.id}><span>ROUTE {route.id}</span><h2>{route.title}</h2><p>{route.durationLabel}・{route.totalCost.toLocaleString()}円</p></article>)}
         </section>
       )}
 
-      {generated && (
+      {result.status !== "idle" && (
         <section className="results" id="routes">
           <div className="results-heading">
             <div><p className="eyebrow">03 ROUTE OPTIONS</p><h2>この時間なら、こんな奈良。</h2></div>
-            <div className="conditions"><span>{mode === "planned" ? `${form.freeStart} → ${form.freeEnd}` : form.duration}</span><span>予算 {budget.toLocaleString()}円</span><span>{form.returnTo}へ帰着</span></div>
+            <div className="conditions"><span>{mode === "planned" ? `${form.freeStart} → ${form.freeEnd}` : form.duration}</span><span>予算 {budget.toLocaleString()}円</span><span>{form.returnTo || form.start}へ帰着</span></div>
           </div>
 
-          <div className="route-grid">
-            {routes.map((route, index) => {
-              const over = budget > 0 && route.total > budget;
-              return (
-                <button key={route.id} className={`route-card ${selectedRoute === index ? "selected" : ""}`} onClick={() => setSelectedRoute(index)} style={{ "--route-color": route.color } as React.CSSProperties}>
-                  <div className="route-photo" style={{ backgroundImage: `linear-gradient(180deg, transparent 30%, rgba(20,25,22,.72)), url("${route.image}")` }}><span>ROUTE {route.id}</span><b>{route.duration}</b></div>
-                  <div className="route-card-body"><div className="route-card-top"><h3>{route.title}</h3><span className="select-ring">{selectedRoute === index ? "✓" : ""}</span></div><p>{route.description}</p><div className="route-stats"><strong>{route.total.toLocaleString()}円</strong><span>{route.walk}</span></div>{over && <small className="over-budget">予算を{(route.total - budget).toLocaleString()}円超過</small>}</div>
-                </button>
-              );
-            })}
-          </div>
+          {result.status === "loading" && (
+            <p className="results-state" role="status">条件に合うルートを計算しています…</p>
+          )}
 
           <div className="route-detail">
             <RouteMap

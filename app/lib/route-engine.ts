@@ -98,9 +98,18 @@ export function walkMinutes(km: number): number {
   return Math.ceil((km * 1000) / WALK_METERS_PER_MINUTE);
 }
 
-function estimateTravelMinutes(from: { lat: number; lng: number }, to: { lat: number; lng: number }): number {
-  return walkMinutes(distanceKm(from, to));
-}
+/**
+ * 2地点の移動時間（分）の見積もり方。
+ * 既定は直線距離からの概算。実際の徒歩時間が手に入る場合は差し替える。
+ */
+export type TravelMinutes = (from: { lat: number; lng: number }, to: { lat: number; lng: number }) => number;
+
+export type PlanRoutesOptions = {
+  travelMinutes?: TravelMinutes;
+};
+
+/** 既定の見積もり。直線距離を徒歩の速さで割るだけで、実際の道のりではない。 */
+export const estimateTravelMinutes: TravelMinutes = (from, to) => walkMinutes(distanceKm(from, to));
 
 /** 備考を検索語へ分解する。日本語は空白で区切られないので、読点や中黒でも切る。 */
 function tokenizeNotes(notes: string | undefined): string[] {
@@ -154,7 +163,7 @@ type Itinerary = {
 };
 
 /** 与えられた立ち寄り先を、ゴールへ戻るまでが最短になる順に並べた行程を作る。 */
-function buildItinerary(places: EnginePlace[], request: RouteRequest): Itinerary {
+function buildItinerary(places: EnginePlace[], request: RouteRequest, travel: TravelMinutes): Itinerary {
   let best: Itinerary | null = null;
 
   for (const order of permutations(places)) {
@@ -164,16 +173,16 @@ function buildItinerary(places: EnginePlace[], request: RouteRequest): Itinerary
     let elapsed = 0;
 
     for (const place of order) {
-      const travel = estimateTravelMinutes(cursor, place);
-      const arrival = elapsed + travel;
+      const travelToPlace = travel(cursor, place);
+      const arrival = elapsed + travelToPlace;
       const departure = arrival + place.stayMinutes;
-      legs.push({ place, travelMinutes: travel, arrivalMinutes: arrival, departureMinutes: departure });
-      travelMinutes += travel;
+      legs.push({ place, travelMinutes: travelToPlace, arrivalMinutes: arrival, departureMinutes: departure });
+      travelMinutes += travelToPlace;
       elapsed = departure;
       cursor = place;
     }
 
-    const backToGoal = estimateTravelMinutes(cursor, request.goal);
+    const backToGoal = travel(cursor, request.goal);
     travelMinutes += backToGoal;
     const returnMinutes = elapsed + backToGoal;
 
@@ -216,11 +225,16 @@ type Candidate = {
  *
  * 条件を満たす候補がない場合は空の配列を返す。
  */
-export function planRoutes(places: EnginePlace[], request: RouteRequest): RoutePlan[] {
+export function planRoutes(
+  places: EnginePlace[],
+  request: RouteRequest,
+  options: PlanRoutesOptions = {},
+): RoutePlan[] {
   const buffer = request.safetyBufferMinutes ?? DEFAULT_SAFETY_BUFFER_MINUTES;
   const timeLimit = request.availableMinutes - buffer;
   if (places.length === 0 || timeLimit <= 0) return [];
 
+  const travel = options.travelMinutes ?? estimateTravelMinutes;
   const affordable = places.filter((place) => place.cost <= request.budget);
   const tokens = tokenizeNotes(request.notes);
 
@@ -228,7 +242,7 @@ export function planRoutes(places: EnginePlace[], request: RouteRequest): RouteP
   for (const group of combinations(affordable, MAX_STOPS)) {
     const totalCost = group.reduce((sum, place) => sum + place.cost, 0);
     if (totalCost > request.budget) continue;
-    const itinerary = buildItinerary(group, request);
+    const itinerary = buildItinerary(group, request, travel);
     if (itinerary.returnMinutes > timeLimit) continue;
     candidates.push({ itinerary, totalCost, score: scoreItinerary(itinerary, tokens) });
   }

@@ -78,6 +78,8 @@ main { min-height: 100vh; overflow: hidden; }
 .results-heading h2,.data-section h2 { margin: 0; font-family: "Yu Mincho",serif; font-size: clamp(30px,4vw,48px); font-weight: 600; letter-spacing: -.035em; }
 .conditions { display: flex; flex-wrap: wrap; justify-content: end; gap: 8px; }
 .conditions span { padding: 8px 11px; border-radius: 8px; background: rgba(255,255,255,.65); color: var(--moss); font-size: 10px; font-weight: 800; }
+.results-state { margin: 0; padding: 34px 26px; border: 1px dashed var(--line); border-radius: 18px; background: var(--card); color: #6c6d68; font-size: 14px; line-height: 1.8; text-align: center; }
+.results-state.error { border-style: solid; border-color: var(--vermillion); color: var(--vermillion); }
 .route-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .route-card { padding: 0; overflow: hidden; text-align: left; border: 2px solid transparent; border-radius: 17px; background: var(--card); color: var(--ink); box-shadow: 0 8px 24px rgba(45,43,34,.07); transition: transform .2s,border-color .2s; }
 .route-card:hover { transform: translateY(-3px); }

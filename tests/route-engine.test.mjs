@@ -159,6 +159,68 @@ describe("条件による絞り込み", () => {
   });
 });
 
+describe("移動時間の差し替え", () => {
+  test("渡した移動時間の計算方法を使う", () => {
+    const plans = planRoutes(PLACES, BASE_REQUEST, { travelMinutes: () => 1 });
+    assert.ok(plans.length > 0);
+    for (const plan of plans) {
+      for (const leg of plan.legs) {
+        assert.equal(leg.travelMinutes, 1, `${plan.id}: 差し替えた計算が使われていない`);
+      }
+    }
+  });
+
+  test("移動時間が長くなると、立ち寄れる数が減る", () => {
+    // 空き時間165分、安全余裕10分 → 使えるのは155分
+    const fast = planRoutes(PLACES, BASE_REQUEST, { travelMinutes: () => 1 });
+    // 1区間60分なら、1か所だけ（往復120分＋滞在30分＝150分）が限界
+    const slow = planRoutes(PLACES, BASE_REQUEST, { travelMinutes: () => 60 });
+
+    assert.ok(Math.max(...fast.map((plan) => plan.places.length)) > 1, "速いときに複数か所へ寄れていない");
+    for (const plan of slow) {
+      assert.equal(plan.places.length, 1, `${plan.id}: 1区間60分なのに複数か所へ寄っている`);
+    }
+  });
+
+  test("移動時間が長すぎればルートを返さない", () => {
+    // 1区間80分なら往復だけで160分となり、155分に収まらない
+    const tooSlow = planRoutes(PLACES, BASE_REQUEST, { travelMinutes: () => 80 });
+    assert.deepEqual(tooSlow, [], "往復160分でも戻れることになっている");
+  });
+
+  test("差し替えた場合も、ゴールへ戻る区間を必ず数える", () => {
+    const plans = planRoutes(PLACES, BASE_REQUEST, { travelMinutes: () => 5 });
+    for (const plan of plans) {
+      // 立ち寄り先ぶんの移動 + ゴールへ戻る1区間
+      assert.equal(plan.travelMinutes, (plan.places.length + 1) * 5, `${plan.id}: 帰りが数えられていない`);
+    }
+  });
+
+  test("計算方法には出発地・施設・ゴールの座標が渡る", () => {
+    const seen = [];
+    planRoutes([PLACES[1]], BASE_REQUEST, {
+      travelMinutes: (from, to) => {
+        seen.push([from, to]);
+        return 5;
+      },
+    });
+    assert.ok(seen.length >= 2, "行きと帰りの2区間が計算されていない");
+    assert.deepEqual(seen[0][0], STATION);
+    assert.equal(seen[0][1].id, "nakanishi");
+    assert.equal(seen[1][0].id, "nakanishi");
+    assert.deepEqual(seen[1][1], STATION);
+  });
+
+  test("渡さなければ直線距離からの概算を使う", () => {
+    const withDefault = planRoutes(PLACES, BASE_REQUEST);
+    const explicit = planRoutes(PLACES, BASE_REQUEST, {});
+    assert.deepEqual(
+      withDefault.map((plan) => plan.returnMinutes),
+      explicit.map((plan) => plan.returnMinutes),
+    );
+  });
+});
+
 describe("好みの反映", () => {
   test("備考のキーワードに合う施設が先頭のルートに入る", () => {
     const plans = planRoutes(PLACES, { ...BASE_REQUEST, notes: "甘いもの" });
