@@ -107,6 +107,20 @@ test("3つのルート案が計算結果から表示される", async () => {
   assert.doesNotMatch(html, /奈良のごはんと町家甘味|職人にふれる奈良筆体験|きたまちの器と奈良酒/);
 });
 
+test("徒歩時間の出どころ（OSM実測か概算か）を結果画面で隠さない", async () => {
+  // travelSource は /api/routes を叩いた後の状態にしか出ないため、
+  // 初回SSRのHTMLからは検証できない（rendered-html の他テストと同じ制約）。
+  // 「モーダルと検索欄がキーボード操作に対応している」テストと同じく、
+  // ソースコードを直接読んで、隠さずに描画しているかを確かめる。
+  const page = await readFile(pageUrl, "utf8");
+
+  assert.match(
+    page,
+    /TRAVEL_SOURCE_NOTE\[result\.travelSource/,
+    "travelSource（osm/estimate）の注記を結果画面に描画していない",
+  );
+});
+
 test("公式カタログの375件とカテゴリ内訳が欠けていない", async () => {
   const catalog = await readCatalog();
 
