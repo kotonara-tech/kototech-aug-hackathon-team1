@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import catalogJson from "./data/ashiato-spots.json";
+import RouteMap from "./components/RouteMap";
 
 type TripMode = "planned" | "gap";
 type CatalogItem = {
@@ -33,7 +34,7 @@ type RoutePlan = {
   walk: string;
   color: string;
   image: string;
-  stops: { time: string; travel: string; spot: Spot; x: number; y: number }[];
+  stops: { time: string; travel: string; spot: Spot }[];
 };
 
 const catalog = catalogJson as { count: number; items: CatalogItem[] };
@@ -76,24 +77,24 @@ const routes: RoutePlan[] = [
     id: "A", title: "奈良のごはんと町家甘味", description: "ちゃんと食べて、ならまちをゆっくり歩く王道コース。", total: 2850, duration: "2時間24分", walk: "徒歩 31分", color: "#d85d43",
     image: spots.kamado.image,
     stops: [
-      { time: "11:43", travel: "近鉄奈良駅から徒歩13分", spot: spots.nakanishi, x: 46, y: 37 },
-      { time: "12:28", travel: "徒歩15分", spot: spots.kamado, x: 60, y: 68 },
+      { time: "11:43", travel: "近鉄奈良駅から徒歩13分", spot: spots.nakanishi },
+      { time: "12:28", travel: "徒歩15分", spot: spots.kamado },
     ],
   },
   {
     id: "B", title: "職人にふれる奈良筆体験", description: "自分だけの一本をつくって、老舗の甘味でひと休み。", total: 2250, duration: "2時間15分", walk: "徒歩 29分", color: "#315a46",
     image: spots.nakanishi.image,
     stops: [
-      { time: "11:48", travel: "近鉄奈良駅から徒歩18分", spot: spots.tanaka, x: 57, y: 62 },
-      { time: "12:52", travel: "徒歩4分", spot: spots.nakanishi, x: 48, y: 45 },
+      { time: "11:48", travel: "近鉄奈良駅から徒歩18分", spot: spots.tanaka },
+      { time: "12:52", travel: "徒歩4分", spot: spots.nakanishi },
     ],
   },
   {
     id: "C", title: "きたまちの器と奈良酒", description: "静かな古民家と地酒をたどる、少し大人の寄り道。", total: 500, duration: "2時間20分", walk: "徒歩 43分", color: "#b68a2e",
     image: spots.yusai.image,
     stops: [
-      { time: "11:45", travel: "近鉄奈良駅から徒歩15分", spot: spots.kitokito, x: 63, y: 25 },
-      { time: "12:45", travel: "徒歩22分", spot: spots.yusai, x: 42, y: 55 },
+      { time: "11:45", travel: "近鉄奈良駅から徒歩15分", spot: spots.kitokito },
+      { time: "12:45", travel: "徒歩22分", spot: spots.yusai },
     ],
   },
 ];
@@ -249,14 +250,13 @@ export default function Home() {
           </div>
 
           <div className="route-detail">
-            <div className="route-map" style={{ "--route-color": activeRoute.color } as React.CSSProperties}>
-              <div className="map-grid" aria-hidden="true" />
-              <span className="map-label station-label">近鉄奈良駅</span><span className="map-label town-label">ならまち</span><span className="map-label park-label">奈良公園</span>
-              <div className="map-path path-one" /><div className="map-path path-two" />
-              <span className="map-pin start-pin" aria-label="出発・帰着地点">START<br />& GOAL</span>
-              {activeRoute.stops.map((stop, index) => <button key={stop.spot.name} className="map-spot" style={{ left: `${stop.x}%`, top: `${stop.y}%` }} onClick={() => setActiveSpot(stop.spot)} aria-label={`${stop.spot.name}の詳細`}><i>{index + 1}</i><b>{stop.spot.name}</b></button>)}
-              <div className="map-legend"><span>徒歩ルート（試算）</span><strong>{activeRoute.walk}</strong></div>
-            </div>
+            <RouteMap
+              routeId={activeRoute.id}
+              routeColor={activeRoute.color}
+              walkSummary={activeRoute.walk}
+              stops={activeRoute.stops}
+              onSelectSpot={setActiveSpot}
+            />
 
             <div className="itinerary">
               <div className="itinerary-header"><div><span>選択中・ROUTE {activeRoute.id}</span><h3>{activeRoute.title}</h3></div><strong>{activeRoute.total.toLocaleString()}円</strong></div>
