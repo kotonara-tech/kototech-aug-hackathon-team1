@@ -2,10 +2,7 @@
 
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import catalogJson from "./data/ashiato-spots.json";
-import { SAMPLE_PLACES } from "./lib/places";
-import { planRoutes } from "./lib/route-engine";
-import { buildRouteRequest, parseBudget } from "./lib/route-request";
-import { formatMinutes, toRouteViews, type RouteStopView, type RouteView } from "./lib/route-view";
+import RouteMap from "./components/RouteMap";
 
 type TripMode = "planned" | "gap";
 type CatalogItem = {
@@ -14,6 +11,30 @@ type CatalogItem = {
   genres: string[];
   narafuru: boolean;
   sourcePages: number[];
+};
+type Spot = {
+  name: string;
+  type: string;
+  address: string;
+  price: string;
+  cost: number;
+  stay: string;
+  lat: number;
+  lng: number;
+  image: string;
+  note: string;
+  sourceNote: string;
+};
+type RoutePlan = {
+  id: string;
+  title: string;
+  description: string;
+  total: number;
+  duration: string;
+  walk: string;
+  color: string;
+  image: string;
+  stops: { time: string; travel: string; spot: Spot }[];
 };
 
 /** ルート生成の状態。読み込み中・候補なし・エラーを画面で区別するために持つ。 */
@@ -31,7 +52,32 @@ const TRAVEL_SOURCE_NOTE: Record<TravelSource, string> = {
   estimate: "外部サービスへ接続できなかったため、徒歩時間は直線距離からの概算です。実際はこれより長くかかります。",
 };
 
-const catalog = catalogJson as { count: number; items: CatalogItem[] };
+const routes: RoutePlan[] = [
+  {
+    id: "A", title: "奈良のごはんと町家甘味", description: "ちゃんと食べて、ならまちをゆっくり歩く王道コース。", total: 2850, duration: "2時間24分", walk: "徒歩 31分", color: "#d85d43",
+    image: spots.kamado.image,
+    stops: [
+      { time: "11:43", travel: "近鉄奈良駅から徒歩13分", spot: spots.nakanishi },
+      { time: "12:28", travel: "徒歩15分", spot: spots.kamado },
+    ],
+  },
+  {
+    id: "B", title: "職人にふれる奈良筆体験", description: "自分だけの一本をつくって、老舗の甘味でひと休み。", total: 2250, duration: "2時間15分", walk: "徒歩 29分", color: "#315a46",
+    image: spots.nakanishi.image,
+    stops: [
+      { time: "11:48", travel: "近鉄奈良駅から徒歩18分", spot: spots.tanaka },
+      { time: "12:52", travel: "徒歩4分", spot: spots.nakanishi },
+    ],
+  },
+  {
+    id: "C", title: "きたまちの器と奈良酒", description: "静かな古民家と地酒をたどる、少し大人の寄り道。", total: 500, duration: "2時間20分", walk: "徒歩 43分", color: "#b68a2e",
+    image: spots.yusai.image,
+    stops: [
+      { time: "11:45", travel: "近鉄奈良駅から徒歩15分", spot: spots.kitokito },
+      { time: "12:45", travel: "徒歩22分", spot: spots.yusai },
+    ],
+  },
+];
 
 const sections = ["すべて", "グルメ・カフェ", "お土産・ショッピング", "文化体験・体験", "宿泊", "サービス"];
 
@@ -201,48 +247,26 @@ export default function Home() {
             <p className="results-state" role="status">条件に合うルートを計算しています…</p>
           )}
 
-          {result.status === "error" && (
-            <p className="results-state error" role="alert">{result.error}</p>
-          )}
+          <div className="route-detail">
+            <RouteMap
+              routeId={activeRoute.id}
+              routeColor={activeRoute.color}
+              walkSummary={activeRoute.walk}
+              stops={activeRoute.stops}
+              onSelectSpot={setActiveSpot}
+            />
 
-          {result.status === "done" && routes.length === 0 && (
-            <p className="results-state" role="status">{result.message ?? "条件に合うルートが見つかりませんでした。"}</p>
-          )}
-
-          {result.status === "done" && activeRoute && (
-            <>
-              <div className="route-grid">
-                {routes.map((route, index) => (
-                  <button key={route.id} className={`route-card ${selectedRoute === index ? "selected" : ""}`} onClick={() => setSelectedRoute(index)} style={{ "--route-color": route.color } as React.CSSProperties}>
-                    <div className="route-photo" style={{ backgroundImage: `linear-gradient(180deg, transparent 30%, rgba(20,25,22,.72)), url("${route.image}")` }}><span>ROUTE {route.id}</span><b>{route.durationLabel}</b></div>
-                    <div className="route-card-body"><div className="route-card-top"><h3>{route.title}</h3><span className="select-ring">{selectedRoute === index ? "✓" : ""}</span></div><p>{route.description}</p><div className="route-stats"><strong>{route.totalCost.toLocaleString()}円</strong><span>{route.walkLabel}</span></div></div>
-                  </button>
-                ))}
-              </div>
-
-              <div className="route-detail">
-                <div className="route-map" style={{ "--route-color": activeRoute.color } as React.CSSProperties}>
-                  <div className="map-grid" aria-hidden="true" />
-                  <span className="map-label station-label">近鉄奈良駅</span><span className="map-label town-label">ならまち</span><span className="map-label park-label">奈良公園</span>
-                  <div className="map-path path-one" /><div className="map-path path-two" />
-                  <span className="map-pin start-pin" aria-label="出発・帰着地点">START<br />& GOAL</span>
-                  {activeRoute.stops.map((stop, index) => <button key={stop.id} className="map-spot" style={{ left: `${stop.x}%`, top: `${stop.y}%` }} onClick={() => setActiveSpot(stop)} aria-label={`${stop.name}の詳細`}><i>{index + 1}</i><b>{stop.name}</b></button>)}
-                  <div className="map-legend"><span>徒歩ルート（試算）</span><strong>{activeRoute.walkLabel}</strong></div>
-                </div>
-
-                <div className="itinerary">
-                  <div className="itinerary-header"><div><span>選択中・ROUTE {activeRoute.id}</span><h3>{activeRoute.title}</h3></div><strong>{activeRoute.totalCost.toLocaleString()}円</strong></div>
-                  <ol>
-                    <li className="origin"><time>{mode === "planned" ? form.freeStart : "出発"}</time><div><strong>{form.start}</strong><p>ここから出発</p></div></li>
-                    {activeRoute.stops.map((stop) => <li key={stop.id}><time>{stop.arrivalClock ?? `+${stop.arrivalMinutes}分`}</time><button onClick={() => setActiveSpot(stop)}><span className="travel-time">{stop.travelLabel}</span><strong>{stop.name}</strong><p>{stop.type}・{stop.stay}・{stop.price}</p><span className="detail-link">住所・写真・地図を見る →</span></button></li>)}
-                    <li className="origin goal"><time>{activeRoute.returnClock ?? formatMinutes(activeRoute.returnMinutes)}</time><div><strong>{form.returnTo || form.start}</strong><p>余裕を約10分残して帰着</p></div></li>
-                  </ol>
-                  <button className="choose-button">このルートを選ぶ <span>→</span></button>
-                  <p className="prototype-note">{TRAVEL_SOURCE_NOTE[result.travelSource ?? "estimate"]}</p>
-                </div>
-              </div>
-            </>
-          )}
+            <div className="itinerary">
+              <div className="itinerary-header"><div><span>選択中・ROUTE {activeRoute.id}</span><h3>{activeRoute.title}</h3></div><strong>{activeRoute.total.toLocaleString()}円</strong></div>
+              <ol>
+                <li className="origin"><time>{form.freeStart || "11:30"}</time><div><strong>{form.start}</strong><p>ここから出発</p></div></li>
+                {activeRoute.stops.map((stop) => <li key={stop.spot.name}><time>{stop.time}</time><button onClick={() => setActiveSpot(stop.spot)}><span className="travel-time">{stop.travel}</span><strong>{stop.spot.name}</strong><p>{stop.spot.type}・{stop.spot.stay}・{stop.spot.price}</p><span className="detail-link">住所・写真・地図を見る →</span></button></li>)}
+                <li className="origin goal"><time>{mode === "planned" ? form.freeEnd : "13:50"}</time><div><strong>{form.returnTo}</strong><p>余裕を約10分残して帰着</p></div></li>
+              </ol>
+              <button className="choose-button">このルートを選ぶ <span>→</span></button>
+              <p className="prototype-note">次段階で、ルート達成確認とSHIKA no ASHIATOクーポン受取を接続予定</p>
+            </div>
+          </div>
         </section>
       )}
 
