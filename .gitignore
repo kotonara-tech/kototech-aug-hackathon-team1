@@ -43,3 +43,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Claude Code (個人設定はコミットしない)
+.claude/settings.local.json

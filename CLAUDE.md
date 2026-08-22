@@ -302,6 +302,29 @@ npm test
 
 コミット前に`npm run build`を実行してください。3000番ポートが使われている場合、開発サーバーは3001番など別のポートを選ぶことがあります。
 
+## Claude Code の Agent と SKILL
+
+`.claude/` に、このプロジェクト用の作業定義を置いています。
+
+### SKILL（作業手順・その場で読む）
+
+| SKILL | 読むタイミング |
+| --- | --- |
+| `.claude/skills/tdd-cycle/SKILL.md` | `app/` 以下の本体コードを変更する作業の開始時。Red → Green → Refactor の手順とテストランナーの決め方 |
+| `.claude/skills/verify/SKILL.md` | コミット前・変更後の検証。lint / build / test の順番と、既知の失敗の切り分け |
+| `.claude/skills/route-rules/SKILL.md` | ルート生成・並べ替え・所要時間や料金の計算に触れるとき。必須条件と3案の出し方 |
+
+### Agent（作業を委譲する）
+
+| Agent | 役割 |
+| --- | --- |
+| `tdd-implementer` | 実装担当（Sonnet）。TDD サイクルで本体コードを書く |
+| `route-constraint-auditor` | ルート候補が必須条件を満たすか独立監査。コードは変更しない |
+| `spot-data-curator` | 375施設カタログの照合・項目追加。出典と確認日時を必ず残す |
+| `ui-a11y-reviewer` | 日本語UI・スマホ操作性・アクセシビリティ・配色のレビュー。コードは変更しない |
+
+`.claude/settings.json` には、よく使うコマンドの許可と、公開方針を守るための拒否（デプロイ系コマンド、`.env` の読み取り）を入れています。個人設定の `.claude/settings.local.json` はコミットしません。
+
 ## コーディング方針
 
 - 画面とユーザー向けの文章は日本語にする
@@ -338,3 +361,4 @@ origin https://github.com/kotonara-tech/kototech-aug-hackathon-team1.git
 - `npm run build`が成功する
 - `npm run lint`が成功する
 - `npm test`が成功する
+
