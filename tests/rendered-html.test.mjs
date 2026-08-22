@@ -101,7 +101,9 @@ test("3つのルート案が計算結果から表示される", async () => {
   assert.match(html, /時間|分/);
 
   // 試算値であることの但し書きを消さない
-  assert.match(html, /プロトタイプ試算/);
+  assert.match(html, /試算/);
+  // 375件のうち何件をルートに使えるのかを隠さない
+  assert.match(html, /座標が揃った/);
 
   // 差し替え前の固定ルートが残っていないこと
   assert.doesNotMatch(html, /奈良のごはんと町家甘味|職人にふれる奈良筆体験|きたまちの器と奈良酒/);

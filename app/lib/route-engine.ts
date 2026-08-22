@@ -78,6 +78,12 @@ const DEFAULT_SAFETY_BUFFER_MINUTES = 10;
 const MAX_STOPS = 3;
 /** 提案するルート数。 */
 const MAX_PLANS = 3;
+/**
+ * 同じジャンルの施設が1組並ぶごとに引く点数。
+ * 立ち寄り先1件分の価値（8点＋掲載10点）より大きくして、
+ * 「カフェばかり3軒」より「カフェ・和菓子・工芸品」が上に来るようにする。
+ */
+const GENRE_OVERLAP_PENALTY = 20;
 
 const ROUTE_IDS = ["A", "B", "C"];
 
@@ -112,7 +118,7 @@ export type PlanRoutesOptions = {
 export const estimateTravelMinutes: TravelMinutes = (from, to) => walkMinutes(distanceKm(from, to));
 
 /** 備考を検索語へ分解する。日本語は空白で区切られないので、読点や中黒でも切る。 */
-function tokenizeNotes(notes: string | undefined): string[] {
+export function tokenizeNotes(notes: string | undefined): string[] {
   if (!notes) return [];
   return notes
     .split(/[\s、。,.・／/|｜]+/)
@@ -120,7 +126,8 @@ function tokenizeNotes(notes: string | undefined): string[] {
     .filter((token) => token.length > 0);
 }
 
-function matchesNotes(place: EnginePlace, tokens: string[]): boolean {
+/** 施設が、ユーザーの希望（備考）に合うか。 */
+export function matchesNotes(place: EnginePlace, tokens: string[]): boolean {
   if (tokens.length === 0) return false;
   const haystack = [place.name, place.type, ...place.genres].join(" ").toLowerCase();
   return tokens.some((token) => haystack.includes(token));
@@ -195,6 +202,21 @@ function buildItinerary(places: EnginePlace[], request: RouteRequest, travel: Tr
   return best as Itinerary;
 }
 
+/**
+ * 同じジャンルの施設が並んでいる数を数える。
+ * 「カフェ・カフェ・カフェ」のような、変化のないルートを見つけるために使う。
+ */
+function overlappingGenrePairs(places: EnginePlace[]): number {
+  let pairs = 0;
+  for (let i = 0; i < places.length; i += 1) {
+    for (let j = i + 1; j < places.length; j += 1) {
+      const shared = places[i].genres.some((genre) => places[j].genres.includes(genre));
+      if (shared) pairs += 1;
+    }
+  }
+  return pairs;
+}
+
 function scoreItinerary(itinerary: Itinerary, tokens: string[]): number {
   let score = 0;
   for (const place of itinerary.places) {
@@ -203,6 +225,9 @@ function scoreItinerary(itinerary: Itinerary, tokens: string[]): number {
     if (matchesNotes(place, tokens)) score += 40; // ユーザーの希望を最優先
   }
   score -= itinerary.travelMinutes * 0.5; // 移動ばかりのルートは下げる
+  // 同じジャンルが並ぶルートは下げる。ただし候補のジャンルが偏っていても
+  // 提案が消えないよう、点数を下げるだけで除外はしない。
+  score -= overlappingGenrePairs(itinerary.places) * GENRE_OVERLAP_PENALTY;
   return score;
 }
 

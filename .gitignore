@@ -46,3 +46,6 @@ yarn-error.log*
 
 # Claude Code (個人設定はコミットしない)
 .claude/settings.local.json
+
+# OSM生データの手元キャッシュ（再取得できるのでコミットしない）
+app/data/.osm-poi-cache.json

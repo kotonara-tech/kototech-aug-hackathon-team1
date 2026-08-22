@@ -282,3 +282,55 @@ describe("POST /api/routes の入力エラー", () => {
     assert.equal(response.status, 405);
   });
 });
+
+describe("POST /api/routes の候補", () => {
+  const NEAR_TODAIJI = {
+    mode: "gap",
+    duration: "150",
+    budget: "3000",
+    start: "東大寺",
+    returnTo: "東大寺",
+    notes: "",
+  };
+
+  test("手作業の6件だけでなく、公式カタログの施設からも提案する", async () => {
+    const { SAMPLE_PLACES } = await import("../app/lib/places.ts");
+    const curated = new Set(SAMPLE_PLACES.map((place) => place.name));
+
+    const data = await (await callApi(NEAR_TODAIJI)).json();
+    const names = data.routes.flatMap((route) => route.stops.map((stop) => stop.name));
+    assert.ok(names.length > 0, "立ち寄り先が空");
+    assert.ok(
+      names.some((name) => !curated.has(name)),
+      `手作業の6件しか出ていない: ${names.join(", ")}`,
+    );
+  });
+
+  test("提案される施設は、すべて公式カタログに載っている", async () => {
+    const catalog = (await import("../app/data/ashiato-spots.json", { with: { type: "json" } })).default;
+    const catalogNames = new Set(catalog.items.map((item) => item.name));
+
+    const data = await (await callApi(NEAR_TODAIJI)).json();
+    for (const route of data.routes) {
+      for (const stop of route.stops) {
+        assert.ok(catalogNames.has(stop.name), `カタログに無い施設: ${stop.name}`);
+      }
+    }
+  });
+
+  test("徒歩時間表に渡す地点数は、共有サーバーに配慮して抑える", async () => {
+    // 徒歩時間表は座標の組み合わせごとにキャッシュされるので、テストごとに出発地を変える
+    await callApi({ ...NEAR_TODAIJI, start: "奈良公園", returnTo: "奈良公園" });
+    const matrixCall = calls.find((call) => call.includes("routed-foot"));
+    assert.ok(matrixCall, "徒歩時間表を1回も呼んでいない");
+    const size = (matrixCall.split("/foot/")[1] ?? "").split(";").length;
+    assert.ok(size <= 30, `${size}か所渡している。多すぎる`);
+  });
+
+  test("候補が増えても、外部への通信回数は増やさない", async () => {
+    await callApi(NEAR_TODAIJI);
+    const matrixCalls = calls.filter((call) => call.includes("routed-foot"));
+    // 区間ごとに呼ぶ実装に戻っていないことの見張り。キャッシュが効けば0回になる。
+    assert.ok(matrixCalls.length <= 1, `徒歩時間表を${matrixCalls.length}回呼んでいる`);
+  });
+});
