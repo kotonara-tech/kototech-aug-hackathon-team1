@@ -81,15 +81,30 @@ test("2つの入力モードとルート生成の導線が表示される", asyn
   assert.match(html, /予算内/);
 });
 
-test("3つのルート案が表示される", async () => {
+test("3つのルート案が計算結果から表示される", async () => {
   const html = await pageHtml();
 
-  assert.match(html, /奈良のごはんと町家甘味/);
-  assert.match(html, /職人にふれる奈良筆体験/);
-  assert.match(html, /きたまちの器と奈良酒/);
+  // ルートは固定値ではなく、初期条件をエンジンに通した結果である。
+  // 見出しの文言は計算内容で変わるので、案が3つ出ていることと、
+  // 中身が実在の掲載施設から作られていることを確かめる。
+  // ReactのSSRは「ROUTE 」と値の間に <!-- --> を挟むことがある
+  for (const id of ["A", "B", "C"]) {
+    assert.match(html, new RegExp(`ROUTE (<!-- -->)?${id}`), `ROUTE ${id} が出ていない`);
+  }
+
+  const { SAMPLE_PLACES } = await import("../app/lib/places.ts");
+  const appeared = SAMPLE_PLACES.filter((place) => html.includes(place.name));
+  assert.ok(appeared.length > 0, "提案に実在の掲載施設が1件も出ていない");
+
+  // 金額と所要時間を必ず添える
+  assert.match(html, /円/);
+  assert.match(html, /時間|分/);
 
   // 試算値であることの但し書きを消さない
   assert.match(html, /プロトタイプ試算/);
+
+  // 差し替え前の固定ルートが残っていないこと
+  assert.doesNotMatch(html, /奈良のごはんと町家甘味|職人にふれる奈良筆体験|きたまちの器と奈良酒/);
 });
 
 test("公式カタログの375件とカテゴリ内訳が欠けていない", async () => {
