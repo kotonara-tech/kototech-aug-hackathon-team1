@@ -8,6 +8,9 @@ import {
   computeBounds,
   computeCenter,
   buildWalkLine,
+  pointAtProgress,
+  headingFromDelta,
+  triangleWave,
 } from "../app/lib/map-view.ts";
 
 const STOP_A = { id: "nakanishi", name: "寧楽菓子司 中西与三郎", lat: 34.6778, lng: 135.8306 };
@@ -124,5 +127,149 @@ describe("buildWalkLine", () => {
     const brokenStop = { id: "broken", name: "座標なし", lat: NaN, lng: 135.8 };
     const line = buildWalkLine(NARA_STATION, [STOP_A, brokenStop], NARA_STATION);
     assert.equal(line.length, 3);
+  });
+});
+
+describe("pointAtProgress", () => {
+  const LINE_2 = [
+    { lat: 0, lng: 0 },
+    { lat: 0, lng: 4 },
+  ];
+
+  test("t = 0 は始点", () => {
+    const result = pointAtProgress(LINE_2, 0);
+    assert.ok(result);
+    assert.deepEqual(result!.point, { lat: 0, lng: 0 });
+  });
+
+  test("t = 1 は終点", () => {
+    const result = pointAtProgress(LINE_2, 1);
+    assert.ok(result);
+    assert.deepEqual(result!.point, { lat: 0, lng: 4 });
+  });
+
+  test("距離で按分する（区間の点数ではなく長さで一定速度）", () => {
+    // 長さ1と長さ3の2区間（合計4）。t=0.5は「距離2」の位置になるはず。
+    const line = [
+      { lat: 0, lng: 0 },
+      { lat: 0, lng: 1 },
+      { lat: 0, lng: 4 },
+    ];
+    const result = pointAtProgress(line, 0.5);
+    assert.ok(result);
+    assert.equal(result!.point.lat, 0);
+    assert.equal(result!.point.lng, 2);
+  });
+
+  test("点が1つしかない折れ線はその点を返す", () => {
+    const result = pointAtProgress([{ lat: 34.68, lng: 135.8 }], 0.7);
+    assert.ok(result);
+    assert.deepEqual(result!.point, { lat: 34.68, lng: 135.8 });
+  });
+
+  test("点が0個の折れ線は null", () => {
+    assert.equal(pointAtProgress([], 0.5), null);
+  });
+
+  test("同じ座標が連続する（長さ0の区間）でも例外にならずNaNを返さない", () => {
+    const line = [
+      { lat: 0, lng: 0 },
+      { lat: 0, lng: 0 },
+      { lat: 0, lng: 4 },
+    ];
+    for (const t of [0, 0.1, 0.5, 0.9, 1]) {
+      const result = pointAtProgress(line, t);
+      assert.ok(result);
+      assert.ok(Number.isFinite(result!.point.lat));
+      assert.ok(Number.isFinite(result!.point.lng));
+    }
+  });
+
+  test("すべての点が同じ座標（区間の長さが全て0）でも例外にならない", () => {
+    const line = [
+      { lat: 1, lng: 1 },
+      { lat: 1, lng: 1 },
+      { lat: 1, lng: 1 },
+    ];
+    const result = pointAtProgress(line, 0.5);
+    assert.ok(result);
+    assert.deepEqual(result!.point, { lat: 1, lng: 1 });
+  });
+
+  test("t が範囲外（負の値）は始点にクランプする", () => {
+    const result = pointAtProgress(LINE_2, -0.5);
+    assert.ok(result);
+    assert.deepEqual(result!.point, { lat: 0, lng: 0 });
+  });
+
+  test("t が範囲外（1超）は終点にクランプする", () => {
+    const result = pointAtProgress(LINE_2, 1.8);
+    assert.ok(result);
+    assert.deepEqual(result!.point, { lat: 0, lng: 4 });
+  });
+});
+
+describe("headingFromDelta", () => {
+  test("経度が増えていれば東", () => {
+    assert.equal(headingFromDelta(0.01), "east");
+  });
+
+  test("経度が減っていれば西", () => {
+    assert.equal(headingFromDelta(-0.01), "west");
+  });
+
+  test("経度の変化が0ならnone", () => {
+    assert.equal(headingFromDelta(0), "none");
+  });
+});
+
+describe("pointAtProgress の進行方向", () => {
+  test("東へ進む区間ではheadingLngが正になる", () => {
+    const line = [
+      { lat: 0, lng: 0 },
+      { lat: 0, lng: 4 },
+    ];
+    const result = pointAtProgress(line, 0.5);
+    assert.ok(result);
+    assert.equal(headingFromDelta(result!.headingLng), "east");
+  });
+
+  test("西へ進む区間ではheadingLngが負になる", () => {
+    const line = [
+      { lat: 0, lng: 4 },
+      { lat: 0, lng: 0 },
+    ];
+    const result = pointAtProgress(line, 0.5);
+    assert.ok(result);
+    assert.equal(headingFromDelta(result!.headingLng), "west");
+  });
+});
+
+describe("triangleWave", () => {
+  test("経過0は0", () => {
+    assert.equal(triangleWave(0, 1000), 0);
+  });
+
+  test("半周期でピーク1になる", () => {
+    assert.equal(triangleWave(500, 1000), 1);
+  });
+
+  test("1周期でまた0に戻る（往復）", () => {
+    assert.equal(triangleWave(1000, 1000), 0);
+  });
+
+  test("周期の1/4では0.5前後まで進む", () => {
+    assert.equal(triangleWave(250, 1000), 0.5);
+  });
+
+  test("周期が0以下なら常に0", () => {
+    assert.equal(triangleWave(500, 0), 0);
+    assert.equal(triangleWave(500, -100), 0);
+  });
+
+  test("負の経過時間でも例外にならない", () => {
+    const result = triangleWave(-250, 1000);
+    assert.ok(Number.isFinite(result));
+    assert.ok(result >= 0 && result <= 1);
   });
 });

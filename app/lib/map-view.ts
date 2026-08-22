@@ -124,3 +124,96 @@ export function buildWalkLine(start: LatLng, stops: StopInput[], goal: LatLng): 
 
   return line;
 }
+
+/** 折れ線上のある位置。地図の上を歩く鹿マーカーの座標・向きに使う。 */
+export type LineProgress = {
+  point: LatLng;
+  /**
+   * 現在いる区間の始点→終点の経度差。
+   * 正なら東へ、負なら西へ進んでいる（`headingFromDelta` で判定する）。
+   * 区間の長さが0のときや折れ線が1点のときは 0。
+   */
+  headingLng: number;
+};
+
+/** 2点間の距離（度単位のユークリッド距離）。地図表示用の目安計算であり、実距離ではない。 */
+function degreeDistance(a: LatLng, b: LatLng): number {
+  const dLat = b.lat - a.lat;
+  const dLng = b.lng - a.lng;
+  return Math.sqrt(dLat * dLat + dLng * dLng);
+}
+
+/**
+ * 折れ線（`line`）上の進捗 `t`（0〜1）に対応する座標を返す。
+ *
+ * 区間の点数ではなく**距離**で按分するため、短い区間でも長い区間でも一定の速さで進む。
+ * `t` は 0〜1 にクランプする。折れ線が空なら `null`、1点しかなければ常にその点を返す。
+ */
+export function pointAtProgress(line: LatLng[], t: number): LineProgress | null {
+  if (line.length === 0) return null;
+  if (line.length === 1) return { point: { ...line[0] }, headingLng: 0 };
+
+  const clamped = Number.isFinite(t) ? Math.min(1, Math.max(0, t)) : 0;
+
+  const segmentLengths: number[] = [];
+  let total = 0;
+  for (let i = 0; i < line.length - 1; i++) {
+    const len = degreeDistance(line[i], line[i + 1]);
+    segmentLengths.push(len);
+    total += len;
+  }
+
+  if (total === 0) {
+    return { point: { ...line[0] }, headingLng: 0 };
+  }
+
+  const targetDistance = clamped * total;
+  let traveled = 0;
+
+  for (let i = 0; i < segmentLengths.length; i++) {
+    const segLen = segmentLengths[i];
+    const segEnd = traveled + segLen;
+    const isLastSegment = i === segmentLengths.length - 1;
+
+    if (targetDistance <= segEnd || isLastSegment) {
+      const from = line[i];
+      const to = line[i + 1];
+      // 長さ0の区間は0除算を避け、そのまま終点を返す。
+      const segT = segLen === 0 ? 1 : Math.min(1, Math.max(0, (targetDistance - traveled) / segLen));
+      return {
+        point: {
+          lat: from.lat + (to.lat - from.lat) * segT,
+          lng: from.lng + (to.lng - from.lng) * segT,
+        },
+        headingLng: to.lng - from.lng,
+      };
+    }
+
+    traveled = segEnd;
+  }
+
+  const last = line[line.length - 1];
+  return { point: { ...last }, headingLng: 0 };
+}
+
+/** 進行方向。鹿マーカーを左右反転させるかの判定に使う。 */
+export type Heading = "east" | "west" | "none";
+
+/** 経度差から進行方向を判定する。正なら東、負なら西、0ならnone。 */
+export function headingFromDelta(deltaLng: number): Heading {
+  if (deltaLng > 0) return "east";
+  if (deltaLng < 0) return "west";
+  return "none";
+}
+
+/**
+ * 経過時間から、0→1→0 と往復する進捗値（三角波）をつくる。
+ *
+ * 地図上の鹿が折れ線の上を往復して歩くアニメーション、およびローディング演出の
+ * 時間制御に使う。`periodMs` が0以下、または数値でなければ常に0を返す。
+ */
+export function triangleWave(elapsedMs: number, periodMs: number): number {
+  if (!Number.isFinite(elapsedMs) || !Number.isFinite(periodMs) || periodMs <= 0) return 0;
+  const phase = (((elapsedMs % periodMs) + periodMs) % periodMs) / periodMs;
+  return phase <= 0.5 ? phase * 2 : (1 - phase) * 2;
+}

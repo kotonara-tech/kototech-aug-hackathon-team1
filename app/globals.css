@@ -211,3 +211,102 @@ footer > p { flex: 1; } footer > a { color: var(--moss); text-decoration: none; 
   z-index: 999 !important;
   pointer-events: auto !important;
 }
+
+/* ========================================================
+   鹿アニメーション（ローディング演出 & 地図の鹿マーカー）
+   ======================================================== */
+
+/* -- ローディング演出 -- */
+.deer-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 48px 20px;
+}
+
+.deer-loading-stage {
+  width: 100%;
+  max-width: 420px;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.deer-loading-walker {
+  position: absolute;
+  top: 10px;
+  width: 64px;
+  height: 64px;
+  animation: deer-walk-across 4s linear infinite;
+}
+
+@keyframes deer-walk-across {
+  0%   { left: -80px; }
+  100% { left: calc(100% + 80px); }
+}
+
+.deer-loading-bounce {
+  animation: deer-bounce 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes deer-bounce {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+/* 前脚のアニメーション */
+.deer-leg-fl {
+  transform-origin: 20px 36px;
+  animation: deer-leg-forward 0.4s ease-in-out infinite alternate;
+}
+.deer-leg-bl {
+  transform-origin: 40px 36px;
+  animation: deer-leg-backward 0.4s ease-in-out infinite alternate;
+}
+.deer-leg-fr {
+  transform-origin: 20px 36px;
+  animation: deer-leg-backward 0.4s ease-in-out infinite alternate;
+}
+.deer-leg-br {
+  transform-origin: 40px 36px;
+  animation: deer-leg-forward 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes deer-leg-forward {
+  0%   { transform: rotate(-18deg); }
+  100% { transform: rotate(18deg); }
+}
+@keyframes deer-leg-backward {
+  0%   { transform: rotate(18deg); }
+  100% { transform: rotate(-18deg); }
+}
+
+.deer-loading-text {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* -- 地図の鹿マーカー -- */
+.deer-map-marker {
+  pointer-events: none !important;
+  background: transparent;
+  border: none;
+}
+
+/* -- prefers-reduced-motion: アニメーション停止 -- */
+@media (prefers-reduced-motion: reduce) {
+  .deer-loading-walker,
+  .deer-loading-bounce,
+  .deer-leg-fl,
+  .deer-leg-bl,
+  .deer-leg-fr,
+  .deer-leg-br {
+    animation: none !important;
+  }
+  .deer-loading-walker {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

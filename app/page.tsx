@@ -199,7 +199,43 @@ export default function Home() {
           </div>
 
           {result.status === "loading" && (
-            <p className="results-state" role="status">条件に合うルートを計算しています…</p>
+            <div className="results-state deer-loading" role="status" aria-live="polite">
+              <div aria-hidden="true" className="deer-loading-stage">
+                <div className="deer-loading-walker">
+                  <div className="deer-loading-bounce">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+                      {/* 角 */}
+                      <line x1="22" y1="8" x2="16" y2="2" stroke="#7a5c3a" strokeWidth="2.5" strokeLinecap="round"/>
+                      <line x1="16" y1="2" x2="12" y2="5" stroke="#7a5c3a" strokeWidth="2" strokeLinecap="round"/>
+                      <line x1="22" y1="8" x2="28" y2="3" stroke="#7a5c3a" strokeWidth="2.5" strokeLinecap="round"/>
+                      <line x1="28" y1="3" x2="32" y2="6" stroke="#7a5c3a" strokeWidth="2" strokeLinecap="round"/>
+                      {/* 頭 */}
+                      <ellipse cx="22" cy="14" rx="8" ry="7" fill="#b07a45"/>
+                      {/* 耳 */}
+                      <ellipse cx="14" cy="12" rx="4" ry="2.5" fill="#b07a45" transform="rotate(-20 14 12)"/>
+                      {/* 鼻 */}
+                      <ellipse cx="14" cy="17" rx="2" ry="1.5" fill="#8a5c30"/>
+                      {/* 目 */}
+                      <circle cx="18" cy="12" r="1.5" fill="#3a2510"/>
+                      {/* 首・胴体 */}
+                      <ellipse cx="32" cy="30" rx="14" ry="10" fill="#b07a45"/>
+                      {/* 尻 */}
+                      <ellipse cx="44" cy="32" rx="7" ry="6" fill="#c4935a"/>
+                      {/* 首 */}
+                      <polygon points="20,20 26,18 28,28 22,30" fill="#b07a45"/>
+                      {/* 脚（左前・左後・右前・右後）*/}
+                      <line className="deer-leg-fl" x1="22" y1="38" x2="20" y2="54" stroke="#8a5c30" strokeWidth="4" strokeLinecap="round"/>
+                      <line className="deer-leg-bl" x1="42" y1="38" x2="44" y2="54" stroke="#8a5c30" strokeWidth="4" strokeLinecap="round"/>
+                      <line className="deer-leg-fr" x1="24" y1="38" x2="22" y2="54" stroke="#7a5025" strokeWidth="3.5" strokeLinecap="round"/>
+                      <line className="deer-leg-br" x1="40" y1="38" x2="42" y2="54" stroke="#7a5025" strokeWidth="3.5" strokeLinecap="round"/>
+                      {/* しっぽ */}
+                      <ellipse cx="50" cy="28" rx="3" ry="2" fill="#f0e8d8"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <p className="deer-loading-text">ルートを計算しています…</p>
+            </div>
           )}
 
           {result.status === "error" && (
